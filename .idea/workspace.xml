@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created config.py to get database connection configuration details in dictionary from environment file.">
-      <change afterPath="$PROJECT_DIR$/db_conn_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/core/db_conn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ExpenseTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ExpenseTracker.iml" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created and Tested DB Connection (core\cofig.py, core\db_conn.py, db_conn_test.py).&#10;&#10;[Connection not working, will check tomorrow.]">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/core/db_conn.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/core/db_conn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +47,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.config.executor": "Run",
+    "Python.db_conn.executor": "Run",
     "Python.db_conn_test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -111,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757001350329</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Created and Tested DB Connection (core\cofig.py, core\db_conn.py, db_conn_test.py).&#10;&#10;[Connection not working, will check tomorrow.]">
+      <option name="closed" value="true" />
+      <created>1757002880154</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1757002880154</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -119,6 +126,7 @@
     <MESSAGE value="Created Virtual environment, Created requirements.txt file with names of required libraries for project, and installed all the libraries in virtual environments using pip install -r requirements.txt." />
     <MESSAGE value="Created .gitignore file and added basic content to ignore." />
     <MESSAGE value="Created config.py to get database connection configuration details in dictionary from environment file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created config.py to get database connection configuration details in dictionary from environment file." />
+    <MESSAGE value="Created and Tested DB Connection (core\cofig.py, core\db_conn.py, db_conn_test.py).&#10;&#10;[Connection not working, will check tomorrow.]" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created and Tested DB Connection (core\cofig.py, core\db_conn.py, db_conn_test.py).&#10;&#10;[Connection not working, will check tomorrow.]" />
   </component>
 </project>
