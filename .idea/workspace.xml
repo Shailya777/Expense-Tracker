@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Main SQL Schema (USERS, ACCOUNTS, CATEGORIES, MERCHANTS, TRANSACTIONS, BUDGET, AUDIT_LOG Tables).">
-      <change afterPath="$PROJECT_DIR$/expense_tracker/core/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/core/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ExpenseTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ExpenseTracker.iml" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Custom Exception Classes, all Inheriting From Exception Class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/utils/sql/sql_schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/utils/sql/sql_schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,19 +43,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.config.executor": "Run",
-    "Python.db_conn.executor": "Run",
-    "Python.db_conn_test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.db_conn.executor&quot;: &quot;Run&quot;,
+    &quot;Python.db_conn_test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="db_conn_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ExpenseTracker" />
@@ -166,7 +164,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757056620668</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added User Registration, Login and Password hashing / Authentication Module.">
+      <option name="closed" value="true" />
+      <created>1757087315629</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1757087315629</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Created Custom Exception Classes, all Inheriting From Exception Class.">
+      <option name="closed" value="true" />
+      <created>1757087355692</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1757087355692</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -177,6 +191,8 @@
     <MESSAGE value="Created and Tested DB Connection (core\cofig.py, core\db_conn.py, db_conn_test.py).&#10;&#10;[Connection not working, will check tomorrow.]" />
     <MESSAGE value="Changed Database User to work on native password in MySQL.&#10;Changed DB Connection to use Native Password Plugin.&#10;Connection Successful." />
     <MESSAGE value="Created Main SQL Schema (USERS, ACCOUNTS, CATEGORIES, MERCHANTS, TRANSACTIONS, BUDGET, AUDIT_LOG Tables)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Main SQL Schema (USERS, ACCOUNTS, CATEGORIES, MERCHANTS, TRANSACTIONS, BUDGET, AUDIT_LOG Tables)." />
+    <MESSAGE value="Added User Registration, Login and Password hashing / Authentication Module." />
+    <MESSAGE value="Created Custom Exception Classes, all Inheriting From Exception Class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Custom Exception Classes, all Inheriting From Exception Class." />
   </component>
 </project>

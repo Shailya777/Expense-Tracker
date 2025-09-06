@@ -72,3 +72,14 @@ create table if not exists audit_log (
     audit_timestamp timestamp default current_timestamp,
     foreign key (user_id) references users(user_id)
 );
+
+
+-- Adding First Name and Last Name Columns in USERS Table:
+alter table users
+add column first_name varchar(255) not null, 
+add column last_name varchar(255) not null;
+
+-- Adding Indexes for Better Searching:
+create index idx_users_email on users(email);
+create index idx_transactions_user_date on transactions(account_id, transaction_date);
+create index idx_budgets_user_period on budgets(user_id, budget_year, budget_month);
