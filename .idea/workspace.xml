@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Custom Exception Classes, all Inheriting From Exception Class.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added first name, last name columns in USERS table, Added some new Indexes for better searching.">
+      <change afterPath="$PROJECT_DIR$/expense_tracker/models/account.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/models/base_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/models/budget.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/models/category.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/models/merchant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/models/transaction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/models/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/utils/sql/sql_schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/utils/sql/sql_schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757087355692</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added first name, last name columns in USERS table, Added some new Indexes for better searching.">
+      <option name="closed" value="true" />
+      <created>1757171293355</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1757171293355</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -193,6 +207,7 @@
     <MESSAGE value="Created Main SQL Schema (USERS, ACCOUNTS, CATEGORIES, MERCHANTS, TRANSACTIONS, BUDGET, AUDIT_LOG Tables)." />
     <MESSAGE value="Added User Registration, Login and Password hashing / Authentication Module." />
     <MESSAGE value="Created Custom Exception Classes, all Inheriting From Exception Class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Custom Exception Classes, all Inheriting From Exception Class." />
+    <MESSAGE value="Added first name, last name columns in USERS table, Added some new Indexes for better searching." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added first name, last name columns in USERS table, Added some new Indexes for better searching." />
   </component>
 </project>
