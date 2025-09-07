@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added first name, last name columns in USERS table, Added some new Indexes for better searching.">
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/account.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/base_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/budget.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/merchant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/transaction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/user.py" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/account_repo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/budget_repo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/user_repo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -194,7 +191,55 @@
       <option name="project" value="LOCAL" />
       <updated>1757171293355</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Created Base Class and User Class (Inheriting from Base Class).">
+      <option name="closed" value="true" />
+      <created>1757173813605</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1757173813605</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Created Account Class (Inheriting from Base Class).">
+      <option name="closed" value="true" />
+      <created>1757173847908</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1757173847908</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Created Transaction Class (Inheriting from Base Class).">
+      <option name="closed" value="true" />
+      <created>1757173861359</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1757173861359</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Created Budget Class (Inheriting from Base Class).">
+      <option name="closed" value="true" />
+      <created>1757173874399</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1757173874399</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Created Merchant Class (Inheriting from Base Class).">
+      <option name="closed" value="true" />
+      <created>1757173889304</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1757173889304</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Created Category Class (Inheriting from Base Class).">
+      <option name="closed" value="true" />
+      <created>1757173901855</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1757173901855</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -208,6 +253,12 @@
     <MESSAGE value="Added User Registration, Login and Password hashing / Authentication Module." />
     <MESSAGE value="Created Custom Exception Classes, all Inheriting From Exception Class." />
     <MESSAGE value="Added first name, last name columns in USERS table, Added some new Indexes for better searching." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added first name, last name columns in USERS table, Added some new Indexes for better searching." />
+    <MESSAGE value="Created Base Class and User Class (Inheriting from Base Class)." />
+    <MESSAGE value="Created Account Class (Inheriting from Base Class)." />
+    <MESSAGE value="Created Transaction Class (Inheriting from Base Class)." />
+    <MESSAGE value="Created Budget Class (Inheriting from Base Class)." />
+    <MESSAGE value="Created Merchant Class (Inheriting from Base Class)." />
+    <MESSAGE value="Created Category Class (Inheriting from Base Class)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Category Class (Inheriting from Base Class)." />
   </component>
 </project>
