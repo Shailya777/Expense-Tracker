@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Account Service file to get accounts by user id, create account.">
-      <change afterPath="$PROJECT_DIR$/expense_tracker/services/transaction_service.py" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Transaction Service to list all Transactions by user id and add transaction (expense / income).">
+      <change afterPath="$PROJECT_DIR$/expense_tracker/services/budget_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757344099214</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Created Transaction Service to list all Transactions by user id and add transaction (expense / income).">
+      <option name="closed" value="true" />
+      <created>1757344375121</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1757344375121</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -327,6 +335,7 @@
     <MESSAGE value="Created a simple Function in SQL to get first day of the month in (YYYY-MM-01) format given any date." />
     <MESSAGE value="Created User Service file to get user by id, view all users and delete users." />
     <MESSAGE value="Created Account Service file to get accounts by user id, create account." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Account Service file to get accounts by user id, create account." />
+    <MESSAGE value="Created Transaction Service to list all Transactions by user id and add transaction (expense / income)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Transaction Service to list all Transactions by user id and add transaction (expense / income)." />
   </component>
 </project>
