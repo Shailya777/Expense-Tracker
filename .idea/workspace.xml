@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/account_repo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/budget_repo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/user_repo.py" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created a simple Function in SQL to get first day of the month in (YYYY-MM-01) format given any date.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -239,7 +235,55 @@
       <option name="project" value="LOCAL" />
       <updated>1757173901855</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Created User Repository, with getting User by id, getting all Users, and deleting User by id.">
+      <option name="closed" value="true" />
+      <created>1757251041680</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1757251041680</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Created Transaction Repository, with getting Transactions by user id, adding transaction using stored procedure, and deleting Transaction by id.">
+      <option name="closed" value="true" />
+      <created>1757251132770</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1757251132770</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Created Budget Repository, with inserting/updating budget using stored procedure, getting all budgets by user id.">
+      <option name="closed" value="true" />
+      <created>1757251242325</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1757251242325</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Created Account Repository, with getting all the accounts by user id, adding account, deleting account.">
+      <option name="closed" value="true" />
+      <created>1757251302189</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1757251302189</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Create SQl Procedures to Add Transaction and Adjust Balance accordingly, Procedure to Upsert Budget.">
+      <option name="closed" value="true" />
+      <created>1757252580388</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1757252580388</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Created a simple Function in SQL to get first day of the month in (YYYY-MM-01) format given any date.">
+      <option name="closed" value="true" />
+      <created>1757253266658</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1757253266658</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -259,6 +303,12 @@
     <MESSAGE value="Created Budget Class (Inheriting from Base Class)." />
     <MESSAGE value="Created Merchant Class (Inheriting from Base Class)." />
     <MESSAGE value="Created Category Class (Inheriting from Base Class)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Category Class (Inheriting from Base Class)." />
+    <MESSAGE value="Created User Repository, with getting User by id, getting all Users, and deleting User by id." />
+    <MESSAGE value="Created Transaction Repository, with getting Transactions by user id, adding transaction using stored procedure, and deleting Transaction by id." />
+    <MESSAGE value="Created Budget Repository, with inserting/updating budget using stored procedure, getting all budgets by user id." />
+    <MESSAGE value="Created Account Repository, with getting all the accounts by user id, adding account, deleting account." />
+    <MESSAGE value="Create SQl Procedures to Add Transaction and Adjust Balance accordingly, Procedure to Upsert Budget." />
+    <MESSAGE value="Created a simple Function in SQL to get first day of the month in (YYYY-MM-01) format given any date." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a simple Function in SQL to get first day of the month in (YYYY-MM-01) format given any date." />
   </component>
 </project>
