@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Charts to Plot Monthly expense Trend, Category wise Expense Breakdown, Plot Budget vs Actual Expense.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Made changes in register and login function to accept email and password as arguments.">
+      <change afterPath="$PROJECT_DIR$/expense_tracker/utils/cli_helpers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expense_tracker/utils/validators.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/core/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/core/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,11 +333,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757347129352</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Made changes in register and login function to accept email and password as arguments.">
+      <option name="closed" value="true" />
+      <created>1757430638295</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1757430638295</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created config.py to get database connection configuration details in dictionary from environment file." />
     <MESSAGE value="Created and Tested DB Connection (core\cofig.py, core\db_conn.py, db_conn_test.py).&#10;&#10;[Connection not working, will check tomorrow.]" />
     <MESSAGE value="Changed Database User to work on native password in MySQL.&#10;Changed DB Connection to use Native Password Plugin.&#10;Connection Successful." />
     <MESSAGE value="Created Main SQL Schema (USERS, ACCOUNTS, CATEGORIES, MERCHANTS, TRANSACTIONS, BUDGET, AUDIT_LOG Tables)." />
@@ -361,6 +369,7 @@
     <MESSAGE value="Created Budget Service file to Upsert Budget and Get Budgets by user id." />
     <MESSAGE value="Created reports generator file for monthly expense trend, category wise expense breakdown and budget vs actual analysis." />
     <MESSAGE value="Created Charts to Plot Monthly expense Trend, Category wise Expense Breakdown, Plot Budget vs Actual Expense." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Charts to Plot Monthly expense Trend, Category wise Expense Breakdown, Plot Budget vs Actual Expense." />
+    <MESSAGE value="Made changes in register and login function to accept email and password as arguments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made changes in register and login function to accept email and password as arguments." />
   </component>
 </project>
