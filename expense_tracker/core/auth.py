@@ -13,9 +13,8 @@ class AuthManager:
         return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     # New User Registration:
-    def register(self):
-        email = input('Enter Email: ').strip()
-        password = input('Enter Password: ').strip()
+    def register(self, email, password):
+
         hashed_pass = self.hash_password(password)
 
         cursor = self.conn.cursor()
@@ -34,9 +33,8 @@ class AuthManager:
 
 
     # User Login:
-    def login(self):
-        email = input('Enter Email: ').strip()
-        password = input('Enter Password: ').strip()
+    def login(self, email, password):
+
         cursor = self.conn.cursor(dictionary= True)
         cursor.execute("select * from users where email = %s", (email,))
         user = cursor.fetchone()
