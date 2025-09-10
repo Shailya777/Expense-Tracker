@@ -1,23 +1,52 @@
 import mysql.connector
-from mysql.connector import Error
+from mysql.connector import pooling
+from .config import settings
 
-# Get Database Connection Details from Configuration file and create Database Connection.
+class DatabaseConnection:
+    """
+    Manages the database connection pool for the application.
+    """
 
-def get_db_connection(db_config):
+    _pool = None
 
-    try:
-        conn = mysql.connector.connect(
-            host = db_config.get('DB_HOST'),
-            user = db_config.get('DB_USER'),
-            password = db_config.get('DB_PASS'),
-            database = db_config.get('DB_NAME'),
-            auth_plugin = 'mysql_native_password'
-        )
+    @classmethod
+    def initialize_pool(cls):
+        """
+        Initializes the MySQL connection pool.
+        """
 
-        if conn.is_connected():
-            return conn
-        else:
-            raise ConnectionError('Failed to Connect to Database.')
+        if cls._pool is None:
+            try:
+                db_config = settings.get_db_config()
+                cls._pool = pooling.MySQLConnectionPool(
+                        pool_name= 'expense_tracker_pool',
+                        pool_size= 5,
+                        **db_config
+                )
+                print('Database Connection Pool Initialized Successfully.')
 
-    except Error as e:
-        raise ConnectionError(f'Database Connection Error: {e}')
+            except mysql.connector.Error as err:
+                print(f'Error Initializing Database Pool: {err}')
+                raise
+
+    @classmethod
+    def get_connection(cls):
+        """
+        Retrieves a connection from the pool.
+        """
+        if cls._pool is None:
+            cls.initialize_pool()
+
+        try:
+            return cls._pool.get_connection()
+        except mysql.connector.Error as err:
+            print(f'Error Getting Connection From Pool: {err}')
+            raise
+
+
+def get_db_connection():
+    """
+    Provides a global access point to a database connection.
+    :return: DatabaseConnection Object.
+    """
+    return DatabaseConnection.get_connection()
