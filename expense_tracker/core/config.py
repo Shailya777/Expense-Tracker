@@ -1,27 +1,43 @@
 # Gets DataBase Connection details From ENVIRONMENT FILE into Dictionary:
 
 import os
+from dotenv import load_dotenv
 
-def load_db_config(env_path = None):
+# Load environment variables from a .env file
+load_dotenv()
 
-    # If no path is provided, Go back up 2 Directories from current file and find .env file in Root Directory:
-    if env_path is None:
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        env_path = os.path.join(base_dir, '.env')
+class Config:
+    """
+    Handles application configuration by loading settings from environment variables.
+    """
 
-    db_config = {}
+    DB_HOST = os.getenv('DB_HOST', 'localhost')
+    DB_PORT = os.getenv('DB_PORT', '3306')
+    DB_USER = os.getenv('DB_USER')
+    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_NAME = os.getenv('DB_NAME')
 
-    if os.path.exists(env_path):
-        with open(env_path) as f:
-            for line in f:
-                line = line.strip()
+    @staticmethod
+    def get_db_config():
+        """
+        Returns the database configuration as a dictionary.
 
-                if line and not line.startswith('#'):
-                    if '=' in line:
-                        key, val = line.split('=', 1)
-                        db_config[key.strip()] = val.strip()
+        :return: DB configuration
+        """
 
-    else:
-        raise FileNotFoundError(f'Database Configuration file {env_path} not found.')
+        config = {
+            'host' : Config.DB_HOST,
+            'port' : Config.DB_PORT,
+            'user' : Config.DB_USER,
+            'password' : Config.DB_PASSWORD,
+            'database' : Config.DB_NAME,
+        }
 
-    return db_config
+        if not all(config.values()):
+            raise ValueError('One or More Database Environment Variables are Not Set.')
+
+        return config
+
+
+# Instantiating The Configuration To Be Imported By Other Modules
+settings = Config()
