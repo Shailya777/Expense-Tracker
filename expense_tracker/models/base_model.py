@@ -39,7 +39,7 @@ class Transaction(BaseModel, ABC):
         self.user_id = user_id
         self.account_id = account_id
         self.category_id = category_id
-        self.merchant_id = merchant_id,
+        self.merchant_id = merchant_id
         self.amount = amount
         self.transaction_date = transaction_date
         self.transaction_type = transaction_type

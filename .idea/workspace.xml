@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in SQL Procedures according to changes in Schema.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Base Model File, SQL Functions file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expense_tracker/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/base_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/utils/sql/functions.sql" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/utils/sql/functions.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -412,11 +411,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757604229275</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Changes in Base Model File, SQL Functions file.">
+      <option name="closed" value="true" />
+      <created>1757606277885</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1757606277885</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created Base Class and User Class (Inheriting from Base Class)." />
     <MESSAGE value="Created Account Class (Inheriting from Base Class)." />
     <MESSAGE value="Created Transaction Class (Inheriting from Base Class)." />
     <MESSAGE value="Created Budget Class (Inheriting from Base Class)." />
@@ -441,6 +447,7 @@
     <MESSAGE value="Changes in db_conn files, made use of class instead of function. used mysql.connector.pooling." />
     <MESSAGE value="Changes in SQL Schema." />
     <MESSAGE value="Changes in SQL Procedures according to changes in Schema." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in SQL Procedures according to changes in Schema." />
+    <MESSAGE value="Changes in Base Model File, SQL Functions file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Base Model File, SQL Functions file." />
   </component>
 </project>
