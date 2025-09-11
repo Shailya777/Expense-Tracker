@@ -5,5 +5,7 @@ create function fn_month_start(p_date date)
 returns date
 deterministic
 begin
-	return date_format(p_date, '%Y-%m-01');
+	return last_day(p_date - interval 1 month) + interval 1 day;
 end $$
+
+delimiter ;
