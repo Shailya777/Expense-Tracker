@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Triggers to update account balance after insert / update / delete on Transactions Table and to enforce category parent integrity on Categories Table.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/account.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/account.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/budget.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/budget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/category.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/merchant.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/merchant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/user_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/user_repo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -441,11 +435,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757682574729</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data.">
+      <option name="closed" value="true" />
+      <created>1757684327550</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1757684327550</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created Budget Class (Inheriting from Base Class)." />
     <MESSAGE value="Created Merchant Class (Inheriting from Base Class)." />
     <MESSAGE value="Created Category Class (Inheriting from Base Class)." />
     <MESSAGE value="Created User Repository, with getting User by id, getting all Users, and deleting User by id." />
@@ -470,6 +471,7 @@
     <MESSAGE value="Changes in Base Model File, SQL Functions file." />
     <MESSAGE value="Fixed a Typo in base_model.py" />
     <MESSAGE value="Created Triggers to update account balance after insert / update / delete on Transactions Table and to enforce category parent integrity on Categories Table." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Triggers to update account balance after insert / update / delete on Transactions Table and to enforce category parent integrity on Categories Table." />
+    <MESSAGE value="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data." />
   </component>
 </project>
