@@ -1,13 +1,12 @@
-from models.base_model import BaseModel
+from dataclasses import dataclass
 
-class Merchant(BaseModel):
+@dataclass
+class Merchant:
+    """
+    Represents a merchant or vendor.
+    Corresponds to the 'merchants' table.
+    """
 
-    def __init__(self, merchant_id, merchant_name):
-        self.merchant_id = merchant_id,
-        self.merchant_name = merchant_name
-
-    def to_dict(self):
-        return {
-            'merchant_id' : self.merchant_id,
-            'merchant_name' : self.merchant_name
-        }
+    name : str
+    user_id : int | None = None
+    id : int | None = None

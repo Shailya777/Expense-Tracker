@@ -1,31 +1,35 @@
-from models.base_model import BaseModel
-
-class Account(BaseModel):
-
-    def __init__(self, account_id, user_id, account_name, balance, account_type):
-        self.account_id = account_id
-        self.user_id = user_id
-        self.account_name = account_name
-        self.balance = balance
-        self.account_type = account_type
-
-    def to_dict(self):
-        return {
-            'account_id' : self.account_id,
-            'user_id' : self.user_id,
-            'account_name' : self.account_name,
-            'balance' : self.balance,
-            'account_type' : self.account_type
-        }
+from decimal import Decimal
+from .base import Account
 
 class CashAccount(Account):
-    def __init__(self, account_id, user_id, account_name, balance):
-        super().__init__(account_id, user_id, account_name, balance, account_type= 'cash')
+    """
+    Represents a cash account.
+    """
+
+    def __init__(self, id: int | None, user_id: int, name: str, balance: Decimal):
+        super().__init__(id, user_id, name, balance, account_type= 'CashAccount')
+
+    def get_account_type(self):
+        return self.account_type
 
 class BankAccount(Account):
-    def __init__(self, account_id, user_id, account_name, balance):
-        super().__init__(account_id, user_id, account_name, balance, account_type= 'bank')
+    """
+    Represents a bank account.
+    """
+
+    def __init__(self, id: int | None, user_id: int, name: str, balance: Decimal):
+        super().__init__(id, user_id, name, balance, account_type= 'BankAccount')
+
+    def get_account_type(self):
+        return self.account_type
 
 class CreditCardAccount(Account):
-    def __init__(self, account_id, user_id, account_name, balance):
-        super().__init__(account_id, user_id, account_name, balance, account_type= 'creditcard')
+    """
+    Represents a Credit Card Account.
+    """
+
+    def __init__(self, id: int | None, user_id: int, name: str, balance: Decimal):
+        super().__init__(id, user_id, name, balance, account_type= 'CreditCardAccount')
+
+    def get_account_type(self):
+        return  self.account_type

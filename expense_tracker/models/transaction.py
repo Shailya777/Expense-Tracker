@@ -1,33 +1,31 @@
-from models.base_model import BaseModel
-
-class Transaction(BaseModel):
-
-    def __init__(self, transaction_id, account_id, category_id, merchant_id, amount, transaction_date, transaction_desc , transaction_type):
-        self.transaction_id = transaction_id,
-        self.account_id = account_id
-        self.category_id = category_id,
-        self.merchant_id = merchant_id,
-        self.amount = amount,
-        self.transaction_date = transaction_date,
-        self.transactions_desc = transaction_desc,
-        self.transaction_type = transaction_type
-        
-    def to_dict(self):
-        return {
-        'transaction_id' : self.transaction_id,
-        'account_id' : self.account_id,
-        'category_id' : self.category_id,
-        'merchant_id' : self.merchant_id,
-        'amount' : self.amount,
-        'transaction_date' : self.transaction_date,
-        'transactions_desc' : self.transactions_desc,
-        'transaction_type' : self.transaction_type
-        }
+from datetime import datetime
+from decimal import Decimal
+from .base import Transaction
 
 class ExpenseTransaction(Transaction):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, transaction_type= 'expense', **kwargs)
+    """
+    Represents an expense transaction.
+    """
+
+    def __init__(self, id: int | None, user_id: int, account_id: int, category_id: int,
+                 amount: Decimal, transaction_date: datetime,
+                 merchant_id: int | None = None, description: str | None = None):
+        super().__init__(id, user_id, account_id, category_id, amount,
+                         transaction_date, 'expense', merchant_id, description)
+
+    def get_transaction_type(self):
+        return self.transaction_type
         
 class IncomeTransaction(Transaction):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, transaction_type= 'income', **kwargs)
+    """
+    Represents an income transaction.
+    """
+
+    def __init__(self, id: int | None, user_id: int, account_id: int, category_id: int,
+                 amount: Decimal, transaction_date: datetime,
+                 merchant_id: int | None = None, description: str | None = None):
+        super().__init__(id, user_id, account_id, category_id, amount,
+                         transaction_date, 'income', merchant_id, description)
+
+    def get_transaction_type(self):
+        return self.transaction_type
