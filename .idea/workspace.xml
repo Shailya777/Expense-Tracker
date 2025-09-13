@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in User Service file. Now handles User registration and login.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Account Service file. Now handles Account Creation, Lists User Accounts and Delete Accounts.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/services/account_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/services/account_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/services/transaction_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/services/transaction_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -483,11 +483,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757773214141</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Changes in Account Service file. Now handles Account Creation, Lists User Accounts and Delete Accounts.">
+      <option name="closed" value="true" />
+      <created>1757775811377</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1757775811377</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created Account Repository, with getting all the accounts by user id, adding account, deleting account." />
     <MESSAGE value="Create SQl Procedures to Add Transaction and Adjust Balance accordingly, Procedure to Upsert Budget." />
     <MESSAGE value="Created a simple Function in SQL to get first day of the month in (YYYY-MM-01) format given any date." />
     <MESSAGE value="Created User Service file to get user by id, view all users and delete users." />
@@ -512,6 +519,7 @@
     <MESSAGE value="Changes in Transaction Repository file." />
     <MESSAGE value="Changes in Budget Repository file." />
     <MESSAGE value="Changes in User Service file. Now handles User registration and login." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in User Service file. Now handles User registration and login." />
+    <MESSAGE value="Changes in Account Service file. Now handles Account Creation, Lists User Accounts and Delete Accounts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Account Service file. Now handles Account Creation, Lists User Accounts and Delete Accounts." />
   </component>
 </project>
