@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Account Repository file.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Transaction Repository file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/budget_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/budget_repo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -459,11 +459,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757692136707</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Changes in Transaction Repository file.">
+      <option name="closed" value="true" />
+      <created>1757769002568</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1757769002568</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created User Repository, with getting User by id, getting all Users, and deleting User by id." />
     <MESSAGE value="Created Transaction Repository, with getting Transactions by user id, adding transaction using stored procedure, and deleting Transaction by id." />
     <MESSAGE value="Created Budget Repository, with inserting/updating budget using stored procedure, getting all budgets by user id." />
     <MESSAGE value="Created Account Repository, with getting all the accounts by user id, adding account, deleting account." />
@@ -488,6 +495,7 @@
     <MESSAGE value="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data." />
     <MESSAGE value="Changes in USer Repository file." />
     <MESSAGE value="Changes in Account Repository file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Account Repository file." />
+    <MESSAGE value="Changes in Transaction Repository file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Transaction Repository file." />
   </component>
 </project>
