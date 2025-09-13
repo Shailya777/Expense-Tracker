@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Account Repository file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/user_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/user_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -443,12 +443,26 @@
       <option name="project" value="LOCAL" />
       <updated>1757684327550</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Changes in USer Repository file.">
+      <option name="closed" value="true" />
+      <created>1757690030510</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1757690030510</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Changes in Account Repository file.">
+      <option name="closed" value="true" />
+      <created>1757692136707</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1757692136707</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created Merchant Class (Inheriting from Base Class)." />
-    <MESSAGE value="Created Category Class (Inheriting from Base Class)." />
     <MESSAGE value="Created User Repository, with getting User by id, getting all Users, and deleting User by id." />
     <MESSAGE value="Created Transaction Repository, with getting Transactions by user id, adding transaction using stored procedure, and deleting Transaction by id." />
     <MESSAGE value="Created Budget Repository, with inserting/updating budget using stored procedure, getting all budgets by user id." />
@@ -472,6 +486,8 @@
     <MESSAGE value="Fixed a Typo in base_model.py" />
     <MESSAGE value="Created Triggers to update account balance after insert / update / delete on Transactions Table and to enforce category parent integrity on Categories Table." />
     <MESSAGE value="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data." />
+    <MESSAGE value="Changes in USer Repository file." />
+    <MESSAGE value="Changes in Account Repository file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Account Repository file." />
   </component>
 </project>
