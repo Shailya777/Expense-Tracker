@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in custom exceptions file. Added Some Application Specific Exceptions.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in validators file. Added validations for password length and texts.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/utils/validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/utils/validators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/utils/cli_helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/utils/cli_helpers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,14 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Created Virtual environment, Created requirements.txt file with names of required libraries for project, and installed all the libraries in virtual environments using pip install -r requirements.txt.">
-      <option name="closed" value="true" />
-      <created>1756994344775</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1756994344775</updated>
     </task>
     <task id="LOCAL-00003" summary="Created Virtual environment, Created requirements.txt file with names of required libraries for project, and installed all the libraries in virtual environments using pip install -r requirements.txt.">
       <option name="closed" value="true" />
@@ -515,11 +507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757854747728</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Changes in validators file. Added validations for password length and texts.">
+      <option name="closed" value="true" />
+      <created>1757855419321</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1757855419321</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created Transaction Service to list all Transactions by user id and add transaction (expense / income)." />
     <MESSAGE value="Created Budget Service file to Upsert Budget and Get Budgets by user id." />
     <MESSAGE value="Created reports generator file for monthly expense trend, category wise expense breakdown and budget vs actual analysis." />
     <MESSAGE value="Created Charts to Plot Monthly expense Trend, Category wise Expense Breakdown, Plot Budget vs Actual Expense." />
@@ -544,6 +543,7 @@
     <MESSAGE value="Changes in Budget Service file. Handles Setting Budget, Listing Budgets for Specified Period, Deleting a Budget." />
     <MESSAGE value="Created Analytics Service file. Gets all transactions by a user and stores it into a dataframe and returns dataframe." />
     <MESSAGE value="Changes in custom exceptions file. Added Some Application Specific Exceptions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in custom exceptions file. Added Some Application Specific Exceptions." />
+    <MESSAGE value="Changes in validators file. Added validations for password length and texts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in validators file. Added validations for password length and texts." />
   </component>
 </project>

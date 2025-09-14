@@ -1,81 +1,74 @@
+import os
+import getpass
+from typing import List, Dict, Any, Callable, Optional
 from tabulate import tabulate
-import argparse
-from services.transaction_service import TransactionService
-from services.budget_service import BudgetService
-from analytics.reports import ReportGenerator
-from analytics.charts import plot_monthly_expense_trend, plot_category_breakdown, plot_budget_vs_actual
-from utils.validators import validate_email, validate_date, validate_amount
 
-def print_table(data, headers):
-    print(tabulate(data, headers= headers, tablefmt= 'grid'))
+def clear_screen():
+    """
+    Clears the terminal screen.
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-def notify(message):
-    print(f'\n==> {message}\n')
+def print_title(title: str):
+    """
+    Prints a formatted title bar.
 
-def parse_args():
-    parser = argparse.ArgumentParser(description= 'Expense Tracker CLI')
-    subparsers = parser.add_subparsers(dest= 'command')
+    :param title: The title text to display.
+    """
+    width = 80
+    print('=' * width)
+    print(f'{title.center(width)}')
+    print('=' * width)
 
-    add_txn = subparsers.add_parser('add_txn')
-    add_txn.add_argument('--account_id', type= int, required= True)
-    add_txn.add_argument('--category_id', type= int, required= True)
-    add_txn.add_argument('--merchant_id', type= int, required= True)
-    add_txn.add_argument('--amount', type= str, required= True)
-    add_txn.add_argument('--date', type= str, required= True)
-    add_txn.add_argument('--description', type= str, required= True)
-    add_txn.add_argument('--txn_type', choices= ['expense', 'income'], required= True)
+def print_table(data: List[Dict[str, Any]], headers: List[str]):
+    """
+    Prints data in a formatted table using the tabulate library.
 
-    view_budget = subparsers.add_parser('view budget')
-    view_budget.add_argument('--user_id', type= int, required= True)
+    :param data: A list of dictionaries representing the rows.
+    :param headers: A list of strings for the table headers.
+    """
+    if not data:
+        print('\nNo Data To Display.')
+        return
 
-    analyze = subparsers.add_parser('analyze')
-    analyze.add_argument('--user_id', type= int, required= True)
-    analyze.add_argument('--type', choices= ['monthly', 'category', 'budget_vs_actual'], required= True)
-    analyze.add_argument('--month',type= int, default= None)
+    # Convert List of Dicts to List of Lists for Tabulate:
+    table_data = [[row.get(header.lower().replace(' ','_'), '') for header in headers] for row in data]
 
-    return parser.parse_args()
+    print(tabulate(table_data, headers= headers, tablefmt= 'grid'))
 
-def handle_command(args, config):
-    txn_service = TransactionService(config)
-    budget_service = BudgetService(config)
-    report_gen = ReportGenerator(config)
+def get_input(prompt: str, validator: Optional[Callable[[str], Any]] = None, error_message: str = 'Invalid Input') -> Any:
+    """
+    Prompts the user for input and validates it using a provided function.
 
-    if args.command == 'add_txn':
-        amount = validate_amount(args.amount)
-        date = validate_date(args.date)
-        txn_data = {
-            'transaction_id' : None,
-            'account_id' : args.account_id,
-            'category_id' : args.category_id,
-            'merchant_id' : args.merchant_id,
-            'amount' : amount,
-            'transaction_date' : date,
-            'transaction_desc' : args.description,
-            'transaction_type' : args.txn_type
-        }
-        txn_service.add_transaction(txn_data)
-        notify('Transaction Added Successfully.')
+    :param prompt: The message to display to the user.
+    :param validator: A function to validate and process the input. Defaults to None.
+    :param error_message: The error message to show on validation failure. Defaults to "Invalid input."
 
-    elif args.command == 'view_budget':
-        budgets = budget_service.get_budgets(args.user_id)
-        print_table(budgets, headers= ['Budget ID', 'User ID', 'Category', 'Amount', 'Month', 'Year'])
+    :return: Any: The validated and processed user input.
+    """
 
-    elif args.command == 'analyze':
-        if args.type == 'monthly':
-            monthly = report_gen.monthly_expense_trend(args.user_id)
-            path = plot_monthly_expense_trend(monthly, 'outputs/monthly_trend.png')
-            notify(f'Monthly Expense Trend Chart Saved to {path}')
+    while True:
+        user_input = input(f'{prompt}: ').strip()
 
-        elif args.type == 'category':
-            breakdown = report_gen.category_breakdown(args.user_id, args.month)
-            path = plot_category_breakdown(breakdown, 'outputs/category_breakdown.png')
-            notify(f'Category Breakdown Chart Saved to {path}')
+        if validator:
+            validated_input = validator(user_input)
 
-        elif args.type == 'budget_vs_actual':
-            if not args.month:
-                notify('Month is Required for Budget vs Actual Analysis.')
-                return
+            if validated_input is not None:
+                return validated_input
+            else:
+                print(error_message)
 
-            budget_actual = report_gen.budget_vs_actual(args.user_id, args.month)
-            path = plot_budget_vs_actual(budget_actual, 'outputs/budget_vs_actual.png')
-            notify(f'Budget vs Actual Chart Saved to {path}')
+        else:
+            return user_input
+
+
+def get_password_input(prompt: str = 'Password') -> str:
+    """
+     Prompts the user for a password without showing the input on the screen.
+
+    :param prompt: The message to display. Defaults to "Password".
+
+    :return: The password entered by the user.
+    """
+
+    return getpass.getpass(f'{prompt}: ')
