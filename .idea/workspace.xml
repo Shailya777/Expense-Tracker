@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes to cli_helpers file. Added functions to clear screen, get input and get password input.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in reports file. Removed class. added top merchant breakdown.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/analytics/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/analytics/reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/analytics/charts.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/analytics/charts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,14 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Created .gitignore file and added basic content to ignore.">
-      <option name="closed" value="true" />
-      <created>1756999389191</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1756999389191</updated>
     </task>
     <task id="LOCAL-00005" summary="Created config.py to get database connection configuration details in dictionary from environment file.">
       <option name="closed" value="true" />
@@ -515,11 +507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757856403864</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Changes in reports file. Removed class. added top merchant breakdown.">
+      <option name="closed" value="true" />
+      <created>1757858381911</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1757858381911</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created reports generator file for monthly expense trend, category wise expense breakdown and budget vs actual analysis." />
     <MESSAGE value="Created Charts to Plot Monthly expense Trend, Category wise Expense Breakdown, Plot Budget vs Actual Expense." />
     <MESSAGE value="Made changes in register and login function to accept email and password as arguments." />
     <MESSAGE value="Created validators to Validate Amount(Must be Positive), Date Format(YYYY-MM-DD), Email Format." />
@@ -544,6 +543,7 @@
     <MESSAGE value="Changes in custom exceptions file. Added Some Application Specific Exceptions." />
     <MESSAGE value="Changes in validators file. Added validations for password length and texts." />
     <MESSAGE value="Changes to cli_helpers file. Added functions to clear screen, get input and get password input." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to cli_helpers file. Added functions to clear screen, get input and get password input." />
+    <MESSAGE value="Changes in reports file. Removed class. added top merchant breakdown." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in reports file. Removed class. added top merchant breakdown." />
   </component>
 </project>
