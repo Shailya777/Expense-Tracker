@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Budget Service file. Handles Setting Budget, Listing Budgets for Specified Period, Deleting a Budget.">
-      <change afterPath="$PROJECT_DIR$/expense_tracker/services/analytics_service.py" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Analytics Service file. Gets all transactions by a user and stores it into a dataframe and returns dataframe.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/core/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/core/exceptions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -507,11 +507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757777371192</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Created Analytics Service file. Gets all transactions by a user and stores it into a dataframe and returns dataframe.">
+      <option name="closed" value="true" />
+      <created>1757778072924</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1757778072924</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created User Service file to get user by id, view all users and delete users." />
     <MESSAGE value="Created Account Service file to get accounts by user id, create account." />
     <MESSAGE value="Created Transaction Service to list all Transactions by user id and add transaction (expense / income)." />
     <MESSAGE value="Created Budget Service file to Upsert Budget and Get Budgets by user id." />
@@ -536,6 +543,7 @@
     <MESSAGE value="Changes in Account Service file. Now handles Account Creation, Lists User Accounts and Delete Accounts." />
     <MESSAGE value="Changes in Transaction Service File. Handles Adding Transaction, Listing All Transactions by Users, Deleting Transactions." />
     <MESSAGE value="Changes in Budget Service file. Handles Setting Budget, Listing Budgets for Specified Period, Deleting a Budget." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in Budget Service file. Handles Setting Budget, Listing Budgets for Specified Period, Deleting a Budget." />
+    <MESSAGE value="Created Analytics Service file. Gets all transactions by a user and stores it into a dataframe and returns dataframe." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Analytics Service file. Gets all transactions by a user and stores it into a dataframe and returns dataframe." />
   </component>
 </project>
