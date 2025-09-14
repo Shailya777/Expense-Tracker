@@ -1,47 +1,67 @@
-import bcrypt
-from expense_tracker.core.db_conn import get_db_connection
-from expense_tracker.core.exceptions import AuthError
+from typing import Optional
+from expense_tracker.models.user import User
 
 class AuthManager:
+    """
+    Manages the authentication state of the application.
 
-    # Gets DB CONNECTION Objects from db_conn file:
-    def __init__(self, db_config):
-        self.conn = get_db_connection(db_config)
+    This class uses static methods and a class-level attribute to hold the
+    state of the currently logged-in user, making it globally accessible
+    after login.
+    """
 
-    # Takes Password, Turns it into Bytes and Turns it into Hashed Password:
-    def hash_password(self, password):
-        return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    _current_user :Optional[User] = None
 
-    # New User Registration:
-    def register(self, email, password):
+    @staticmethod
+    def login(user: User) -> None:
+        """
+        Logs a user in by setting the current user session.
 
-        hashed_pass = self.hash_password(password)
+        :param user:  The user object of the successfully authenticated user.
 
-        cursor = self.conn.cursor()
+        """
 
-        try:
-            cursor.execute(
-                "insert into users (email, password_hash, role) values (%s, %s, 'user')",
-                (email, hashed_pass.decode('utf-8'))
-            )
-            self.conn.commit()
-            print('User Registration Successful')
-
-        except Exception as e:
-            self.conn.rollback()
-            print(f'Registration Failed: {e}')
+        AuthManager._current_user = user
 
 
-    # User Login:
-    def login(self, email, password):
+    @staticmethod
+    def logout() -> None:
+        """
+        Logs the current user out by clearing the session.
+        """
 
-        cursor = self.conn.cursor(dictionary= True)
-        cursor.execute("select * from users where email = %s", (email,))
-        user = cursor.fetchone()
+        AuthManager._current_user = None
 
-        if user is None:
-            raise AuthError('User Not Found.')
-        if not bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
-            raise AuthError('Incorrect Password.')
 
-        return user
+    @staticmethod
+    def get_current_user() -> Optional[User]:
+        """
+        Retrieves the currently logged-in user.
+
+        :return: The User object if a user is logged in, otherwise None.
+        """
+
+        return AuthManager._current_user
+
+
+    @staticmethod
+    def is_authenticated() -> bool:
+        """
+        Checks if there is a user currently logged in.
+
+        :return: bool: True if a user is logged in, False otherwise.
+        """
+
+        return AuthManager._current_user is not None
+
+
+    @staticmethod
+    def is_admin() -> bool:
+        """
+        Checks if the currently logged-in user is an administrator.
+
+        :return: bool: True if the current user has the 'admin' role, False otherwise.
+        """
+
+        user = AuthManager.get_current_user()
+        return user is not None and user.role == 'admin'
