@@ -1,45 +1,105 @@
 import pandas as pd
-from repos.transaction_repo import TransactionRepo
-from repos.budget_repo import BudgetRepo
+from typing import List
 
-class ReportGenerator:
+from pandas.core.ops import comparison_op
 
-    def __init__(self, config):
-        self.transaction_repo = TransactionRepo(config)
-        self.budget_repo = BudgetRepo(config)
+from expense_tracker.services.budget_service import BudgetService
 
-    def monthly_expense_trend(self, user_id):
-        txns = self.transaction_repo.get_by_user(user_id)
-        df = pd.DataFrame(txns)
-        df['transaction_date'] = pd.to_datetime(df['transaction_date'])
-        monthly = df[df['transaction_type'] == 'expense'].groupby(df['transaction_date'].dt.month)['amount'].sum()
-        return monthly
+def monthly_expense_trend(df: pd.DataFrame) -> pd.DataFrame:
+    """
+     Calculates the total monthly expense trend from transaction data.
 
-    def category_breakdown(self, user_id, month = None):
-        txns = self.transaction_repo.get_by_user(user_id)
-        df = pd.DataFrame(txns)
-        df['transaction_date'] = pd.to_datetime(df['transaction_date'])
-        expense_df = df[df['transaction_type'] == 'expense']
+    :param df: DataFrame with transaction data.
 
-        if month:
-            expense_df = expense_df[expense_df['transaction_date'].dt.month == month]
+    :return: A DataFrame indexed by month with total expenses.
+    """
 
-        breakdown = expense_df.groupby('category')['amount'].sum()
-        return breakdown
+    expenses_df = df[df['transaction_type'] == 'expense'].copy()
 
-    def budget_vs_actual(self, user_id, month):
-        budgets = self.budget_repo.get_by_user(user_id)
-        txns = self.transaction_repo.get_by_user(user_id)
+    if expenses_df.empty:
+        return pd.DataFrame(columns= ['Total Expense'])
 
-        txn_df = pd.DataFrame(txns)
-        txn_df['transaction_date'] = pd.to_datetime(txn_df['transaction_date'])
+    expenses_df['month'] = expenses_df['transaction_date'].dt.to_period('M')
+    monthly_trend = expenses_df.groupby('month')['amount'].sum().reset_index()
+    monthly_trend.rename(columsn = {'amount': 'Total Expense'}, inplace= True)
+    monthly_trend['month'] = monthly_trend['month'].astype(str)
+    return monthly_trend
 
-        actual = txn_df[(txn_df['transaction_date'].dt.month == month) & (txn_df['transaction_type'] == 'expense')].groupby('category')['amount'].sum()
+def category_breakdown(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Calculates the breakdown of expenses by category.
 
-        budget_df = pd.DataFrame(budgets)
-        budget_df = budget_df[budget_df['month'] == month]
+    :param df: DataFrame with transaction data.
 
-        result = pd.merge(budget_df, actual, left_on= 'category', right_index= True, how= "left")
-        result['amount_actual'] = result['amount_y'].fillna(0)
+    :return: A DataFrame with total expense amount for each category.
+    """
 
-        return result[['category, amount_x', 'amount_actual']].rename(columns = {'amount_x' : 'budget'})
+    expenses_df = df[df['transaction_type'] == 'expense']
+
+    if expenses_df.empty:
+        return pd.DataFrame(columns=['Total Expense'])
+
+    breakdown = expenses_df.groupby('category_name')['amount'].sum().reset_index()
+    breakdown.rename(columns = {'amount': 'Total Expense'}, inplace= True)
+    return breakdown.sort_values(by= 'Total Expense', ascending= False)
+
+def top_merchants(df: pd.DataFrame, n: int = 5) -> pd.DataFrame:
+    """
+    Identifies the top N merchants by total spending.
+
+    :param df: DataFrame with transaction data.
+    :param n: The number of top merchants to return. Defaults to 5.
+
+    :return: A DataFrame with the top N merchants and their total spending.
+    """
+
+    expenses_df = df[df['transaction_type'] == 'expense']
+
+    if expenses_df.empty or 'merchant_name' not in expenses_df.columns:
+        return pd.DataFrame(columns=['Total Expense'])
+
+    top = expenses_df.groupby('merchant_name')['amount'].sum().reset_index()
+    top.rename(columns = {'amount':'Total Expense'}, inplace= True)
+    return top.nlargest(n, 'Total Expense')
+
+def budget_vs_actual(user_id: int, year: int, month: int, transactions_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Compares budgeted amounts vs actual spending for a given month.
+
+    :param user_id: The ID of the user.
+    :param year: The year of the analysis period.
+    :param month: The month of the analysis period.
+    :param transactions_df: DataFrame of the user's transactions.
+
+    :return: A DataFrame comparing Budget, Actual, and Variance for each category.
+    """
+
+    # 1. Get Budget Data:
+    budgets_raw: List[dict] = BudgetService.get_budgets_for_period(user_id, year, month)
+
+    if not budgets_raw:
+        return pd.DataFrame(columns=['Category', 'Budget', 'Actual','Variance'])
+
+    budgets_df = pd.DataFrame(budgets_raw)
+    budgets_df.rename(columns= {'category_name': 'Category', 'amount': 'Budget'}, inplace= True)
+
+    # 2. Calculate Actual Spending For The Month:
+    start_date = pd.Timestamp(year= year, month= month, day= 1)
+    end_date = start_date + pd.offsets.MonthEnd(1)
+
+    mask = (transactions_df['transaction_date'] >= start_date) & (transactions_df['transaction_date'] <= end_date) & (transactions_df['transaction_type'] == 'expense')
+
+    actual_df = transactions_df.loc[mask]
+
+    if actual_df.empty:
+        actual_summary = pd.DataFrame(columns=['Category', 'Actual'])
+    else:
+        actual_summary = actual_df.groupby('category_name')['amount'].sum().reset_index()
+        actual_summary.rename(columns = {'category_name': 'Category', 'amount':'Actual'}, inplace= True)
+
+    # 3. Merging Budgets vs Actual Data:
+    comparison_df = pd.merge(budgets_df, actual_summary, on= 'Category', how= 'left')
+    comparison_df['Actual'] = comparison_df['Actual'].fillna(0)
+    comparison_df['variance'] = comparison_df['Budget'] = comparison_df['Actual']
+
+    return comparison_df[['Category', 'Budget', 'Actual', 'Variance']]
