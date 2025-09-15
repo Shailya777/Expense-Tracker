@@ -1,5 +1,6 @@
 from expense_tracker.core.db_conn import get_db_connection
 from expense_tracker.models.user import User
+from typing import List
 
 class UserRepository:
     """
@@ -79,3 +80,43 @@ class UserRepository:
                 if row:
                     return User(**row)
                 return None
+
+
+    @staticmethod
+    def find_all() -> List[User]:
+        """
+        Finds all users in the database. (Admin only)
+
+        :return: List[User]: A list of all User objects.
+        """
+
+        with get_db_connection() as conn:
+            with conn.cursor(dictionary= True) as cursor:
+                sql = "select id, username, email, role, created_at from users order by username"
+                cursor.execute(sql)
+                rows = cursor.fetchall()
+
+                users = []
+
+                for row in rows:
+                    users.append(User(**row))
+
+                return users
+
+
+    @staticmethod
+    def delete(user_id: int) -> bool:
+        """
+        Deletes a user from the database. (Admin only)
+
+        :param user_id: The ID of the user to delete.
+
+        :return: bool: True if a row was deleted, False otherwise.
+        """
+
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "delete from users where id = %s"
+                cursor.execute(sql, (user_id,))
+                conn.commit()
+                return cursor.rowcount > 0
