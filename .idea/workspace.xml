@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in User Repository file. Added some admin only methods to list all users and delete users.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods.">
+      <change afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/services/transaction_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/services/transaction_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,14 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Created Custom Exception Classes, all Inheriting From Exception Class.">
-      <option name="closed" value="true" />
-      <created>1757087355692</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1757087355692</updated>
     </task>
     <task id="LOCAL-00011" summary="Added first name, last name columns in USERS table, Added some new Indexes for better searching.">
       <option name="closed" value="true" />
@@ -515,11 +507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757941107706</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods.">
+      <option name="closed" value="true" />
+      <created>1757943194557</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1757943194557</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in db_conn files, made use of class instead of function. used mysql.connector.pooling." />
     <MESSAGE value="Changes in SQL Schema." />
     <MESSAGE value="Changes in SQL Procedures according to changes in Schema." />
     <MESSAGE value="Changes in Base Model File, SQL Functions file." />
@@ -544,6 +543,7 @@
     <MESSAGE value="Created Category Repository file, handling Creation, Deletion and Search of Category by category id and user id." />
     <MESSAGE value="Created Category Service File, Handling Business Logic like creation, listing and deletion of categories for user." />
     <MESSAGE value="Changes in User Repository file. Added some admin only methods to list all users and delete users." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in User Repository file. Added some admin only methods to list all users and delete users." />
+    <MESSAGE value="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods." />
   </component>
 </project>
