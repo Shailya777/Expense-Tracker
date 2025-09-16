@@ -48,13 +48,12 @@ class ExpenseTrackerCLI:
 
     def _startup_menu(self):
 
-        clear_screen()
-        print_title('Welcome to Expense Tracker!!')
+        clear_screen(); print_title('Welcome to Expense Tracker!!')
         print('1. Register')
         print('2. Login')
         print('3. Exit')
 
-        choice = get_input('> ', error_message= 'Please Enter a Number.')
+        choice = get_input('> ', error_message= 'Please Enter a Number:')
 
         if choice == '1': self._handle_registration()
         elif choice == '2': self._handle_login()
@@ -66,8 +65,7 @@ class ExpenseTrackerCLI:
     def _main_menu(self):
 
         user = AuthManager.get_current_user()
-        clear_screen()
-        print_title(f'Main Menu (Logged in as: {user.username})')
+        clear_screen(); print_title(f'Main Menu (Logged in as: {user.username})')
         print('1. Manage Accounts')
         print('2. Manage Categories')
         print('3. Add/View Transactions')
@@ -94,8 +92,7 @@ class ExpenseTrackerCLI:
 
     def _handle_registration(self):
 
-        clear_screen()
-        print_title('Register New User')
+        clear_screen(); print_title('Register New User')
 
         try:
             username = get_input('Username', validate_not_empty, 'UserName Can Not be Empty.')
@@ -206,9 +203,161 @@ class ExpenseTrackerCLI:
 
                 input('\nPress Enter to Continue...')
 
+    def _handle_add_transaction(self):
+        """
+        Handles the logic for adding a new transaction.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Add New Transaction')
+
+        try:
+            # Showing Available Accounts to User:
+            print('Your Accounts:')
+            accounts = self.account_service.get_user_accounts(user.id)
+            acc_headers = ['ID','Name','Type']
+            acc_data = [{
+                'id': acc.id,
+                'name': acc.name,
+                'type': acc.account_type
+            } for acc in accounts]
+
+            print_table(data= acc_data, headers= acc_headers)
+
+            account_id = int(get_input('\nEnter Account ID', lambda i: i if i.isdigit() else None))
+
+            # Showing Available Categories to User:
+            print('\nYour Categories:')
+            categories = self.category_service.get_user_categories(user.id)
+            cat_headers = ['ID','Name','Type']
+            cat_data = [{
+                'id': cat.id,
+                'name': cat.name,
+                'type': cat.type
+            } for cat in categories]
+            print_table(data= cat_data, headers= cat_headers)
+            category_id = int(get_input('\nEnter Category ID', lambda i: i if i.isdigit() else None))
+
+            amount_str = get_input('\nEnter Amount', error_message= 'Please Enter a Valid Number.')
+            amount = validate_amount(amount_str)
+            if amount is None:
+                raise ValidationError('Amount Must be a Positive Number.')
+
+            trans_type = get_input('Enter Type (income/expense)', lambda t: t if t in ['income','expense'] else None)
+
+            date_str = get_input('Enter Date(YYYY-MM-DD, Press Enter for Today)')
+            trans_date = validate_date(date_str) if date_str else datetime.now()
+
+            description = get_input('Enter Description(optional)')
+
+            self.transaction_service.add_transaction(
+                user_id= user.id,
+                account_id= account_id,
+                category_id= category_id,
+                amount= amount,
+                transaction_type= trans_type,
+                transaction_date= trans_date,
+                description= description
+            )
+            print('\nTransaction Added Successfully!!')
+
+        except(ValidationError, ValueError) as e:
+            print(f'\nError: {e}')
+        except Exception as e:
+            print(f'An Unexpected Error Occurred while Adding The Transaction: {e}')
+
+        input('\nPress Enter to Continue...')
+
+
+    def _handle_delete_transaction(self):
+        """
+        Handles the logic for deleting a transaction.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Delete Transaction')
+
+        trans_id_str = get_input('Enter The ID of the Transaction You Want to Delete', lambda i: i if i.isdigit() else None)
+
+        if trans_id_str:
+            trans_id = int(trans_id_str)
+
+            if self.transaction_service.delete_transaction(trans_id, user.id):
+                print(f'\nTransaction with ID {trans_id} has been Deleted Successfully.')
+
+            else:
+                print(f'\nCould Not Delete Transaction. Make Sure The ID is Correct and Belongs to Your Transaction.')
+
+        input('\nPress Enter to Continue...')
+
+
+    def _handle_edit_transaction(self):
+        """
+        Edits An Already Created Transaction.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Edit Transaction')
+
+        trans_id_str = get_input('Enter Transaction ID to Edit', lambda i: i if i.isdigit() else None)
+
+        if not trans_id_str:
+            return
+
+        trans = self.transaction_service.get_transaction_by_id(int(trans_id_str), user.id)
+        if not trans:
+            print('Transaction Not Found.')
+            input('Press Enter...')
+            return
+
+        print('\nEditing Transaction. Press Enter to Keep The Current Value.')
+        new_amount_str = get_input(f'Amount (Current: {trans.amount})')
+        new_desc = get_input(f'Description (Current: {trans.description})')
+
+        new_data = {
+            'amount': validate_amount(new_amount_str) or trans.amount,
+            'description': new_desc or trans.description
+        }
+
+        if self.transaction_service.update_transaction(trans.id, user.id, new_data):
+            print('\nTransaction Updated Successfully.')
+        else:
+            print('\nFailed to Update Transaction.')
+
+        input('\nPress Enter to Continue..')
+
 
     def _manage_transactions(self):
-        pass
+
+        user = AuthManager.get_current_user()
+
+        while True:
+            clear_screen(); print_title('Manage Transactions')
+
+            transactions = self.transaction_service.get_user_transaction(user.id)
+            headers = ['ID','Date','Type','Amount','Category','Account','Description']
+            data = [{
+                'id': t.id,
+                'date': t.transaction_date.strftime('%Y-%m-%d'),
+                'type': t.transaction_type,
+                'amount': f"{t.amount:.2f}",
+                'category': getattr(t, 'category_name','N/A'),
+                'account': getattr(t, 'account_name', 'N/A'),
+                'description': t.description
+            } for t in transactions]
+            print_table(data= data, headers= headers)
+
+            print('\n Options: [A]dd, [E]dit, [D]elete, [B]ack to Main Menu')
+            choice = get_input('> ').lower()
+
+            if choice == 'a':
+                self._handle_add_transaction()
+            elif choice == 'e':
+                self._handle_edit_transaction()
+            elif choice == 'd':
+                self._handle_delete_transaction()
+            elif choice == 'b':
+                break
 
     def _manage_budgets(self):
         pass
@@ -221,6 +370,8 @@ class ExpenseTrackerCLI:
 
     def _admin_manage_users(self):
         pass
+
+
 
 
 if __name__ == '__main__':
