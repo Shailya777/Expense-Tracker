@@ -178,3 +178,63 @@ class TransactionService:
 
         except Exception as e:
             return f'An Error occurred During Import: {e}'
+
+
+    @staticmethod
+    def get_transaction_by_id(transaction_id: int, user_id: int) -> Optional[Transaction]:
+        """
+        Retrieves a single transaction by its ID.
+
+        :param transaction_id: The ID of the transaction.
+        :param user_id: The ID of the user who owns the transaction.
+
+        :return: Optional[Transaction]: The transaction object if found, otherwise None.
+        """
+
+        row = TransactionRepository.find_by_id_and_user(transaction_id, user_id)
+
+        if row:
+            trans_type = row['transaction_type']
+            trans_class = TransactionService.TRANSACTION_TYPE_MAP.get(trans_type)
+
+            if trans_class:
+                return trans_class(
+                    id = row['id'],
+                    user_id = row['user_id'],
+                    account_id = row['account_id'],
+                    category_id = row['category_id'],
+                    amount = row['amount'],
+                    transaction_date = row['transaction_date'],
+                    description = row['description'],
+                    merchant_id = row['merchant_id']
+                    )
+
+        return None
+
+
+    @staticmethod
+    def update_transaction(transaction_id: int, user_id: int, new_data: dict) -> bool:
+        """
+        Updates an existing transaction.
+
+        :param transaction_id: The ID of the transaction to update.
+        :param user_id: The ID of the user.
+        :param new_data: A dictionary with the fields to update.
+
+        :return: bool: True if the update was successful.
+        """
+
+        # Fetching The Existing Transaction:
+        existing_transaction = TransactionService.get_transaction_by_id(transaction_id, user_id)
+
+        if not existing_transaction:
+            return False
+
+        # Update Fields in Transaction From New Data:
+        existing_transaction.amount = new_data.get('amount', existing_transaction.amount)
+        existing_transaction.description = new_data.get('description', existing_transaction.description)
+        existing_transaction.transaction_date = new_data.get('transaction_date', existing_transaction.transaction_date)
+        existing_transaction.account_id = new_data.get('account_id', existing_transaction.account_id)
+        existing_transaction.category_id = new_data.get('category_id', existing_transaction.category_id)
+
+        return TransactionRepository.update(existing_transaction)
