@@ -111,3 +111,58 @@ class TransactionRepository:
                 cursor.execute(sql, (transaction_id, user_id))
                 conn.commit()
                 return cursor.rowcount > 0
+
+
+    @staticmethod
+    def find_by_id_and_user(transaction_id: int, user_id: int) -> Optional[dict]:
+        """
+        Finds a single transaction by its ID, ensuring it belongs to the user.
+
+        :param transaction_id:  The ID of the transaction.
+        :param user_id: The ID of the user.
+
+        :return: Optional[dict]: A dictionary representing the transaction if found, otherwise None.
+        """
+
+        with get_db_connection() as conn:
+            with conn.cursor(dictionary = True) as cursor:
+                sql = "select * from transactions where id = %s and user_id = %s"
+                cursor.execute(sql, (transaction_id, user_id))
+                return cursor.fetchone()
+
+
+    @staticmethod
+    def update(transaction: Transaction) -> bool:
+        """
+        Updates an existing transaction in the database.
+
+        :param transaction: The transaction object with updated data.
+
+        :return: bool: True if the update was successful, False otherwise.
+        """
+
+        with get_db_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = """
+                    update transactions
+                    set account_id = %s,
+                    category_id = %s,
+                    amount = %s,
+                    transaction_date = %s,
+                    description = %s
+                    where id = %s and user_id = %s
+                    """
+
+                params = (
+                    transaction.account_id,
+                    transaction.category_id,
+                    transaction.amount,
+                    transaction.transaction_date,
+                    transaction.description,
+                    transaction.id,
+                    transaction.user_id
+                )
+
+                cursor.execute(sql, params)
+                conn.commit()
+                return cursor.rowcount > 0

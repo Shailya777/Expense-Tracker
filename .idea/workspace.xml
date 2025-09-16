@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Started Working on main.py file.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added Manage Category functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,14 +123,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Created Base Class and User Class (Inheriting from Base Class).">
-      <option name="closed" value="true" />
-      <created>1757173813605</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1757173813605</updated>
     </task>
     <task id="LOCAL-00013" summary="Created Account Class (Inheriting from Base Class).">
       <option name="closed" value="true" />
@@ -515,11 +508,18 @@
       <option name="project" value="LOCAL" />
       <updated>1757951004005</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Added Manage Category functionality.">
+      <option name="closed" value="true" />
+      <created>1758027065266</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1758027065266</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in SQL Procedures according to changes in Schema." />
     <MESSAGE value="Changes in Base Model File, SQL Functions file." />
     <MESSAGE value="Fixed a Typo in base_model.py" />
     <MESSAGE value="Created Triggers to update account balance after insert / update / delete on Transactions Table and to enforce category parent integrity on Categories Table." />
@@ -544,6 +544,7 @@
     <MESSAGE value="Changes in User Repository file. Added some admin only methods to list all users and delete users." />
     <MESSAGE value="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods." />
     <MESSAGE value="Started Working on main.py file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started Working on main.py file." />
+    <MESSAGE value="Added Manage Category functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Manage Category functionality." />
   </component>
 </project>
