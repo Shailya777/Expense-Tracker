@@ -160,8 +160,52 @@ class ExpenseTrackerCLI:
         print_table(data= data, headers= headers)
         input('\nPress Enter to Continue...')
 
+
     def _manage_categories(self):
-        pass
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Manage Categories')
+
+        categories = self.category_service.get_user_categories(user.id)
+        headers = ['ID','Name','Type','Parent ID']
+        data = [{
+            'id': cat.id,
+            'name': cat.name,
+            'type': cat.type,
+            'parent_id': cat.parent_id or 'N/A'
+        } for cat in categories]
+        print_table(data= data, headers= headers)
+
+        print('\nOptions: [A]dd, [D]elete, [B]ack')
+        choice = get_input('> ').lower()
+
+        if choice == 'a':
+            name = get_input('Category Name', validate_not_empty)
+            cat_type = get_input('Type (income/expense)', lambda t : t if t in ['income', 'expense'] else None)
+            parent_id_str = get_input('Parent ID (Optional, Press Enter to Skip)')
+            parent_id = int(parent_id_str) if parent_id_str.isdigit() else None
+
+            try:
+                self.category_service.create_category(user.id, name, cat_type, parent_id)
+                print('Category Added Successfully.')
+
+            except Exception as e:
+                print(f'Error: {e}')
+
+            input('\nPress Enter To Continue...')
+
+        elif choice == 'd':
+            cat_id_str = get_input('Enter Category ID to Delete', lambda i : i if i.isdigit() else None)
+
+            if cat_id_str:
+                if self.category_service.delete_category(int(cat_id_str), user.id):
+                    print('Category Deleted.')
+
+                else:
+                    print('Category Not Found OR Could Not be Deleted.')
+
+                input('\nPress Enter to Continue...')
+
 
     def _manage_transactions(self):
         pass
