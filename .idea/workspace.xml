@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added methods to Find Transaction by id and user id and update transactions.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Transaction Service File. Added Method to Update Transaction and Get Transaction by ID and User ID.">
       <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/services/transaction_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/services/transaction_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,14 +121,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Created Transaction Class (Inheriting from Base Class).">
-      <option name="closed" value="true" />
-      <created>1757173861359</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1757173861359</updated>
     </task>
     <task id="LOCAL-00015" summary="Created Budget Class (Inheriting from Base Class).">
       <option name="closed" value="true" />
@@ -516,11 +506,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758028731855</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Changes in Transaction Service File. Added Method to Update Transaction and Get Transaction by ID and User ID.">
+      <option name="closed" value="true" />
+      <created>1758029631420</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1758029631420</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed a Typo in base_model.py" />
     <MESSAGE value="Created Triggers to update account balance after insert / update / delete on Transactions Table and to enforce category parent integrity on Categories Table." />
     <MESSAGE value="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data." />
     <MESSAGE value="Changes in USer Repository file." />
@@ -545,6 +542,7 @@
     <MESSAGE value="Started Working on main.py file." />
     <MESSAGE value="Added Manage Category functionality." />
     <MESSAGE value="Added methods to Find Transaction by id and user id and update transactions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added methods to Find Transaction by id and user id and update transactions." />
+    <MESSAGE value="Changes in Transaction Service File. Added Method to Update Transaction and Get Transaction by ID and User ID." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Transaction Service File. Added Method to Update Transaction and Get Transaction by ID and User ID." />
   </component>
 </project>
