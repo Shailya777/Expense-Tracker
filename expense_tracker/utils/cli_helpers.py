@@ -1,4 +1,4 @@
-import os
+import os, sys
 import getpass
 from typing import List, Dict, Any, Callable, Optional
 from tabulate import tabulate
@@ -64,16 +64,23 @@ def get_input(prompt: str, validator: Optional[Callable[[str], Any]] = None, err
 
 def get_password_input(prompt: str = 'Password') -> str:
     """
-    Prompts the user for a password.
-    Falls back to visible input if getpass doesn't work in this environment.
-
-    :param prompt: The message to display. Defaults to "Password".
-
-    :return: The password entered by the user.
+    Use getpass when running in a real terminal (TTY).
+    Fall back to visible input in IDEs / non-tty environments.
     """
+    # Allow forcing visible input via env var for debugging
+    if os.environ.get('EXP_TRACKER_VISIBLE_PASSWORD') == '1':
+        print('(Warning: password will be visible)')
+        return input(f'{prompt}: ').strip()
 
+    # If stdin isn't a TTY, getpass will likely block or misbehave -> fallback
+    if not sys.stdin.isatty():
+        print('(Non-interactive/IDE environment detected; password will be visible)')
+        return input(f'{prompt}: ').strip()
+
+    # Otherwise try the normal secure prompt
     try:
         return getpass.getpass(f'{prompt}: ')
-    except (Exception, EOFError):
-        # Fallback for IDEs / environments where getpass doesn't work
+    except Exception:
+        # Last-resort fallback (very rare)
+        print('(getpass failed; falling back to visible input)')
         return input(f'{prompt}: ').strip()
