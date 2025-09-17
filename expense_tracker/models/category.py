@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime
 
 @dataclass
 class Category:
@@ -12,3 +13,4 @@ class Category:
     type : str
     id : int | None = None
     parent_id : int | None = None
+    created_at: datetime = field(default_factory=datetime.now)
