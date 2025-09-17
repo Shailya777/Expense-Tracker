@@ -2,7 +2,6 @@ import os
 import getpass
 from typing import List, Dict, Any, Callable, Optional
 from tabulate import tabulate
-from validators import *
 
 def clear_screen():
     """
@@ -65,11 +64,16 @@ def get_input(prompt: str, validator: Optional[Callable[[str], Any]] = None, err
 
 def get_password_input(prompt: str = 'Password') -> str:
     """
-     Prompts the user for a password without showing the input on the screen.
+    Prompts the user for a password.
+    Falls back to visible input if getpass doesn't work in this environment.
 
     :param prompt: The message to display. Defaults to "Password".
 
     :return: The password entered by the user.
     """
 
-    return getpass.getpass(f'{prompt}: ')
+    try:
+        return getpass.getpass(f'{prompt}: ')
+    except (Exception, EOFError):
+        # Fallback for IDEs / environments where getpass doesn't work
+        return input(f'{prompt}: ').strip()
