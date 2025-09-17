@@ -21,7 +21,7 @@ def plot_monthly_trend(trend_df: pd.DataFrame, user_id: int) -> str:
         return 'No Data Available to Plot.'
 
     plt.figure(figsize = (10,6))
-    sns.barplot(data= trend_df, x = 'month', y = 'Total Expense', palette= 'viridis')
+    sns.barplot(data= trend_df, x = 'month', y = 'Total Expense', palette= 'viridis', hue= 'month')
     plt.title('Monthly Expense Trend')
     plt.xlabel('Month')
     plt.ylabel('Total Spent')

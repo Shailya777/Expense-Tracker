@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in User Repository. Added Password hash as '' while fetching all users.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changed _manage_categories to get category name separately from validation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/analytics/charts.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/analytics/charts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,14 +197,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Created Charts to Plot Monthly expense Trend, Category wise Expense Breakdown, Plot Budget vs Actual Expense.">
-      <option name="closed" value="true" />
-      <created>1757347129352</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1757347129352</updated>
     </task>
     <task id="LOCAL-00030" summary="Made changes in register and login function to accept email and password as arguments.">
       <option name="closed" value="true" />
@@ -590,11 +582,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758118390357</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Changed _manage_categories to get category name separately from validation.">
+      <option name="closed" value="true" />
+      <created>1758123500058</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1758123500058</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes to cli_helpers file. Added functions to clear screen, get input and get password input." />
     <MESSAGE value="Changes in reports file. Removed class. added top merchant breakdown." />
     <MESSAGE value="Changes in charts file. Makes Sure output directory exists and changed filenames to include chart type, username and time of creation." />
     <MESSAGE value="Changes in auth file. Sets Current User by checking logging details for current session." />
@@ -619,6 +618,7 @@
     <MESSAGE value="Added Cursor Context and Connection Context Wrappers in db_conn file to make connections and cursors in with block work." />
     <MESSAGE value="Fixed typos." />
     <MESSAGE value="Changes in User Repository. Added Password hash as '' while fetching all users." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in User Repository. Added Password hash as '' while fetching all users." />
+    <MESSAGE value="Changed _manage_categories to get category name separately from validation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed _manage_categories to get category name separately from validation." />
   </component>
 </project>
