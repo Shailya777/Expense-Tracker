@@ -178,7 +178,10 @@ class ExpenseTrackerCLI:
         choice = get_input('> ').lower()
 
         if choice == 'a':
-            name = get_input('Category Name', validate_not_empty)
+            raw_name = input('Category Name: ').strip()
+            if not validate_not_empty(raw_name):
+                raise ValueError("Category name cannot be empty.")
+            name = raw_name
             cat_type = get_input('Type (income/expense)', lambda t : t if t in ['income', 'expense'] else None)
             parent_id_str = get_input('Parent ID (Optional, Press Enter to Skip)')
             parent_id = int(parent_id_str) if parent_id_str.isdigit() else None

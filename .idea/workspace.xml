@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in User Repository. Added Password hash as '' while fetching all users.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/models/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
