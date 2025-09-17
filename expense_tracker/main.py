@@ -4,6 +4,8 @@ import sys
 from datetime import datetime
 from decimal import Decimal
 
+from unicodedata import category
+
 # Importing Services:
 from services.user_service import UserService
 from services.account_service import AccountService
@@ -392,8 +394,88 @@ class ExpenseTrackerCLI:
             elif choice == 'b':
                 break
 
+
+    def _handle_set_budget(self):
+        """
+        Handles the logic for setting or updating a budget for a given category and month.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Set/Update Budget')
+
+        try:
+            year_str = get_input('Enter Year for The Budget (e.g 2025)', lambda y: y if y.isdigit() and len(y) == 4 else None)
+            month_str = get_input('Enter Month for The Budget (1-12)', lambda m: m if m.isdigit() and 1<= int(m) <= 12 else None)
+
+            print('\nYour Expense Categories:')
+            categories = [c for c in self.category_service.get_user_categories(user.id) if c.type == 'expense']
+            print_table(data= [{
+                'id': cat.id,
+                'name': cat.name
+            } for cat in categories], headers= ['ID','Name'])
+
+            category_id_str = get_input('Enter Category ID to Set Budget for', lambda i: i if i.sidigit() else None)
+            amount_str = get_input('Enter Budget Amount', error_message= 'Please Enter a Valid Number.')
+            amount = validate_amount(amount_str)
+
+            if not all([year_str, month_str, category_id_str, amount]):
+                raise ValidationError('All Fields are Required and Must be Valid.')
+
+            self.budget_service.set_budget(
+                user_id= user.id,
+                category_id= int(category_id_str),
+                amount= amount,
+                year= int(year_str),
+                month= int(month_str)
+            )
+            print('\nBudget Set/Updated Successfully!')
+
+        except (ValidationError, ValueError) as e:
+            print(f'Error: {e}')
+        except Exception as e:
+            print(f'\nAn Unexpected Error Occurred: {e}')
+
+        input('\nPress Enter to Continue...')
+
     def _manage_budgets(self):
-        pass
+        """
+        Sub-menu for viewing and setting/updating budgets.
+        """
+
+        user = AuthManager.get_current_user()
+
+        while True:
+            clear_screen(); print_title('Manage Budgets')
+            print("First, let's View Budgets for a Specific Month.")
+
+            year_str = get_input('Enter Year (e.g. 2025)', lambda y: y if y.isdigit() and len(y) == 4 else None, "Invalid Year.")
+            month_str = get_input('Enter Month (1-12)', lambda m: m if m.isdigit() and 1 <= int(m) <= 12 else None, "Invalid Month.")
+
+            if not year_str or not month_str:
+                return
+
+            year, month = int(year_str), int(month_str)
+            budgets = self.budget_service.get_budgets_for_period(user.id, year, month)
+            headers = ['ID', 'Category', 'Type', 'Amount']
+            data = [{
+                'id': b['id'],
+                'category': b['category_name'],
+                'type': b['category_type'],
+                'amount': f'{b['amount']:.2f}'
+            } for b in budgets]
+            print_table(data= data, headers= headers)
+
+            print('\nOptions: [S]et/Update a Budget, [B]ack to Main Menu')
+            choice = get_input('> ').lower()
+
+            if choice == 's':
+                self._handle_set_budget()
+            elif choice == 'b':
+                break
+            else:
+                print('Invalid Option.')
+                input('\nPress Enter to Continue...')
+
 
     def _run_expense_analysis(self):
         pass

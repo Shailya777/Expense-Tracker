@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added Methods to Manage Transaction, Add Transaction, Delete Transaction, Edit Transaction (In Process).">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Finished Edit Transaction Method.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
     </list>
@@ -122,14 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Created Category Class (Inheriting from Base Class).">
-      <option name="closed" value="true" />
-      <created>1757173901855</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1757173901855</updated>
     </task>
     <task id="LOCAL-00018" summary="Created User Repository, with getting User by id, getting all Users, and deleting User by id.">
       <option name="closed" value="true" />
@@ -515,11 +507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758037499592</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Finished Edit Transaction Method.">
+      <option name="closed" value="true" />
+      <created>1758083498155</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1758083498155</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in USer Repository file." />
     <MESSAGE value="Changes in Account Repository file." />
     <MESSAGE value="Changes in Transaction Repository file." />
     <MESSAGE value="Changes in Budget Repository file." />
@@ -544,6 +543,7 @@
     <MESSAGE value="Changes in Transaction Service File. Added Method to Update Transaction and Get Transaction by ID and User ID." />
     <MESSAGE value="Changes in User Service File. Added Methods to List all USers and Delete Users for Admin." />
     <MESSAGE value="Added Methods to Manage Transaction, Add Transaction, Delete Transaction, Edit Transaction (In Process)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Methods to Manage Transaction, Add Transaction, Delete Transaction, Edit Transaction (In Process)." />
+    <MESSAGE value="Finished Edit Transaction Method." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Edit Transaction Method." />
   </component>
 </project>
