@@ -478,7 +478,42 @@ class ExpenseTrackerCLI:
 
 
     def _run_expense_analysis(self):
-        pass
+        """
+        Handles Analysis of Expenses and Provides Charts of Choice to User.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Expense Analysis')
+        print('1. Monthly Expense Trend')
+        print("2. Expense Breakdown by Category")
+        print('3. Budget vs Actual Spending')
+        choice = get_input('> ')
+
+        df = self.analytics_service.get_transactions_as_dataframe(user.id)
+
+        if df.empty:
+            print('\nNo Transaction Data Available for Analysis.')
+            input('Press Enter...')
+            return
+
+        if choice == '1':
+            trend_df = reports.monthly_expense_trend(df)
+            path = charts.plot_monthly_trend(trend_df= trend_df, user_id= user.id)
+            print(f'\nChart Saved to: {path}')
+
+        elif choice == '2':
+            cat_df = reports.category_breakdown(df)
+            path = charts.plot_category_breakdown(cat_df, user.id)
+            print(f'\nChart Saved to: {path}')
+
+        elif choice == '3':
+            year = int(get_input('Enter Year for Analysis (e.g. 2025)', lambda y: y if y.isdigit() else None))
+            month = int(get_input('Enter Month for Analysis (1-12)', lambda m: m if m.isdigit() else None))
+            bva_df = reports.budget_vs_actual(user.id, year, month, df)
+            path = charts.plot_budget_vs_actual(bva_df, user.id, year, month)
+            print(f'\nChart Saved to: {path}')
+
+        input('\nPress Enter to Continue...')
 
     def _handle_csv_operations(self):
         pass
