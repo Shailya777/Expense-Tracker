@@ -311,12 +311,45 @@ class ExpenseTrackerCLI:
             return
 
         print('\nEditing Transaction. Press Enter to Keep The Current Value.')
+
+        # Editing Date:
+        new_date_str = get_input(f'Date (YYYY-MM-DD) (Current: {trans.transaction_date.strftime('%Y-%m-%d')})')
+        new_date = validate_date(new_date_str) if new_date_str else trans.transaction_date
+
+        # Editing Account:
+        print('\nYour Accounts:')
+        accounts = self.account_service.get_user_accounts(user.id)
+        print_table([{
+            'id': acc.id,
+            'name': acc.name
+        } for acc in accounts], headers= ['ID','Name'])
+        new_account_id_str = get_input(f'Account ID (Current: {trans.account_id})')
+        new_account_id = int(new_account_id_str) if new_account_id_str else trans.account_id
+
+        # Editing Category:
+        print('\nYour Categories:')
+        categories = self.category_service.get_user_categories(user.id)
+        print_table([{
+            'id': cat.id,
+            'name': cat.name,
+            'type': cat.type
+        } for cat in categories], headers= ['ID','Name','Type'])
+        new_category_id_str = get_input(f'Category ID (Current: {trans.category_id})')
+        new_category_id = int(new_category_id_str) if new_account_id_str else trans.category_id
+
+        # Editing Amount and Description:
         new_amount_str = get_input(f'Amount (Current: {trans.amount})')
+        new_amount = validate_amount(new_amount_str) if new_amount_str else trans.amount
+
         new_desc = get_input(f'Description (Current: {trans.description})')
+        final_desc = new_desc if new_desc is not None else trans.description
 
         new_data = {
-            'amount': validate_amount(new_amount_str) or trans.amount,
-            'description': new_desc or trans.description
+            'transaction_date': new_date,
+            'account_id': new_account_id,
+            'category_id': new_category_id,
+            'amount': new_amount,
+            'description': final_desc
         }
 
         if self.transaction_service.update_transaction(trans.id, user.id, new_data):
