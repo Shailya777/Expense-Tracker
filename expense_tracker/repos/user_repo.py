@@ -99,6 +99,8 @@ class UserRepository:
                 users = []
 
                 for row in rows:
+                    # Manually set password_hash to empty string as it's not fetched
+                    row['password_hash'] = ''
                     users.append(User(**row))
 
                 return users

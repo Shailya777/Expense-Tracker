@@ -539,8 +539,7 @@ class ExpenseTrackerCLI:
 
     def _admin_manage_users(self):
         """
-
-        :return:
+        Handles Admin's Functionality to List all users and Delete Users.
         """
 
         admin_user = AuthManager.get_current_user()
