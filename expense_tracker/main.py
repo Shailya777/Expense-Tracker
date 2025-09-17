@@ -118,8 +118,7 @@ class ExpenseTrackerCLI:
 
     def _handle_login(self):
 
-        clear_screen()
-        print_title('User Login')
+        clear_screen(); print_title('User Login')
 
         try:
             email = get_input('Email', validate_email, 'Invalid Email Format.')
@@ -574,6 +573,7 @@ class ExpenseTrackerCLI:
                     print(f'Error: {e}')
 
                 input('\nPress Enter to Continue...')
+
 
 
 

@@ -3,7 +3,7 @@ from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from typing import Optional
 
-def validate_email(email: str) -> bool:
+def validate_email(email: str) -> str | None:
     """
     Validates an email address format using a regular expression.
 
@@ -13,7 +13,7 @@ def validate_email(email: str) -> bool:
     """
 
     pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-    return re.match(pattern, email) is not None
+    return email if re.match(pattern, email) else None
 
 def validate_password(password: str)-> bool:
     """
