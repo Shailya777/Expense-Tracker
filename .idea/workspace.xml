@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Completed Expense Analysis Functionality (Charts for Monthly Expense Trends, Category wise Expense Breakdown and Budget vs Actual Spending).">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Completed CSv Operations to Export Transaction Data to CSV, Import Transactions from CSV.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,14 +122,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Created Budget Repository, with inserting/updating budget using stored procedure, getting all budgets by user id.">
-      <option name="closed" value="true" />
-      <created>1757251242325</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1757251242325</updated>
     </task>
     <task id="LOCAL-00021" summary="Created Account Repository, with getting all the accounts by user id, adding account, deleting account.">
       <option name="closed" value="true" />
@@ -514,11 +507,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758085934468</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Completed CSv Operations to Export Transaction Data to CSV, Import Transactions from CSV.">
+      <option name="closed" value="true" />
+      <created>1758086326584</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1758086326584</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in Budget Repository file." />
     <MESSAGE value="Changes in User Service file. Now handles User registration and login." />
     <MESSAGE value="Changes in Account Service file. Now handles Account Creation, Lists User Accounts and Delete Accounts." />
     <MESSAGE value="Changes in Transaction Service File. Handles Adding Transaction, Listing All Transactions by Users, Deleting Transactions." />
@@ -543,6 +543,7 @@
     <MESSAGE value="Finished Edit Transaction Method." />
     <MESSAGE value="Completed Manage Budgets Functionality (Set/Update Budgets)." />
     <MESSAGE value="Completed Expense Analysis Functionality (Charts for Monthly Expense Trends, Category wise Expense Breakdown and Budget vs Actual Spending)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed Expense Analysis Functionality (Charts for Monthly Expense Trends, Category wise Expense Breakdown and Budget vs Actual Spending)." />
+    <MESSAGE value="Completed CSv Operations to Export Transaction Data to CSV, Import Transactions from CSV." />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed CSv Operations to Export Transaction Data to CSV, Import Transactions from CSV." />
   </component>
 </project>

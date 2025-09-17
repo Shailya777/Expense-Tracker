@@ -539,7 +539,41 @@ class ExpenseTrackerCLI:
         input('\nPress Enter to Continue...')
 
     def _admin_manage_users(self):
-        pass
+        """
+
+        :return:
+        """
+
+        admin_user = AuthManager.get_current_user()
+        clear_screen(); print_title('Admin: Manage Users')
+
+        users = self.user_service.get_all_users()
+        headers = ['Id','Username','Email','Role','Created At']
+        data = [{
+            'id': u.id,
+            'username': u.username,
+            'email': u.email,
+            'role': u.role,
+            'created_at': u.created_at.strftime('%Y-%m-%d')
+        } for u in users]
+        print_table(data= data, headers= headers)
+
+        print('\nOptions: [D]elete User, [B]ack')
+        choice = get_input('> ').lower()
+
+        if choice == 'd':
+            user_id_str = get_input('Enter User ID to Delete', lambda i: i if i.isdigit() else None)
+
+            if user_id_str:
+                try:
+                    if self.user_service.delete_user(int(user_id_str), admin_user):
+                        print('User Deleted Successfully.')
+                    else:
+                        print('User Not Found.')
+                except ValueError as e:
+                    print(f'Error: {e}')
+
+                input('\nPress Enter to Continue...')
 
 
 
