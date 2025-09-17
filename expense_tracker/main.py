@@ -516,7 +516,27 @@ class ExpenseTrackerCLI:
         input('\nPress Enter to Continue...')
 
     def _handle_csv_operations(self):
-        pass
+        """
+        Handles Exporting Transaction Data to CSV File and Importing Transactions from CSV File.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Export/Import Transactions')
+        print('1. Export All transactions to CSV')
+        print('2. Import Transactions from CSV')
+        choice = get_input('> ')
+
+        if choice == '1':
+            filename = get_input('Enter FileName to Save Transactions into (e.g. export.csv)', validate_not_empty)
+            result = self.transaction_service.export_transaction_to_csv(user.id, filename)
+            print(f'\n{result}')
+
+        elif choice == '2':
+            filename = get_input('Enter FileName to Import (e.g. sample_transactions.csv)', validate_not_empty)
+            result = self.transaction_service.import_transactions_from_csv(user.id, filename)
+            print(f'\n{result}')
+
+        input('\nPress Enter to Continue...')
 
     def _admin_manage_users(self):
         pass
