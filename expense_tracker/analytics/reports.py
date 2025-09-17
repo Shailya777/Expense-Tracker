@@ -21,7 +21,7 @@ def monthly_expense_trend(df: pd.DataFrame) -> pd.DataFrame:
 
     expenses_df['month'] = expenses_df['transaction_date'].dt.to_period('M')
     monthly_trend = expenses_df.groupby('month')['amount'].sum().reset_index()
-    monthly_trend.rename(columsn = {'amount': 'Total Expense'}, inplace= True)
+    monthly_trend.rename(columns = {'amount': 'Total Expense'}, inplace= True)
     monthly_trend['month'] = monthly_trend['month'].astype(str)
     return monthly_trend
 

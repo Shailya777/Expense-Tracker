@@ -37,7 +37,7 @@ class UserRepository:
         """
 
         with get_db_connection() as conn:
-            with conn.cursor(dictonary = True) as cursor:
+            with conn.cursor(dictionary = True) as cursor:
                 sql = "select * from users where email = %s"
                 cursor.execute(sql, (email,))
                 row = cursor.fetchone()
