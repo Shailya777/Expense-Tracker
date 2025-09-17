@@ -1,6 +1,64 @@
 import mysql.connector
 from mysql.connector import pooling
 from core.config import settings
+from mysql.connector.pooling import PooledMySQLConnection
+
+class CursorContext:
+    """
+    Context manager wrapper for MySQL cursors.
+    Ensures cursor is closed automatically when leaving a 'with' block.
+    """
+
+    def __init__(self, cursor):
+        self.cursor = cursor
+
+    def __enter__(self):
+        return self.cursor
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        try:
+            self.cursor.close()
+        except Exception as e:
+            print(f'Error: {e}')
+
+class ConnectionContext:
+    """
+    Context manager wrapper for PooledMySQLConnection.
+    Allows usage like:
+
+        with DatabaseConnection.get_connection() as conn:
+            with conn.cursor(dictionary=True) as cursor:
+                cursor.execute("SELECT * FROM users")
+
+    Automatically closes the connection when the context ends.
+    """
+
+    def __init__(self, conn: PooledMySQLConnection):
+        self.conn = conn
+
+    def __enter__(self):
+        return self # Return Wrapper, Not The Raw Connection
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        try:
+            if self.conn.is_connected():
+                if exc_type is None:
+                    self.conn.commit()
+                else:
+                    self.conn.rollback()
+                self.conn.close()
+        except Exception as e:
+            print(f'Error: {e}')
+
+    def cursor(self, *args, **kwargs):
+        """
+        Wrap the real cursor in a context manager.
+        """
+        return CursorContext(self.conn.cursor(*args, **kwargs))
+
+    # Proxy other attributes/methods to the real connection
+    def __getattr__(self, item):
+        return getattr(self.conn, item)
 
 class DatabaseConnection:
     """
@@ -41,7 +99,8 @@ class DatabaseConnection:
             cls.initialize_pool()
 
         try:
-            return cls._pool.get_connection()
+            conn = cls._pool.get_connection()
+            return ConnectionContext(conn)
         except mysql.connector.Error as err:
             print(f'Error Getting Connection From Pool: {err}')
             raise
