@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import pooling
-from .config import settings
+from core.config import settings
 
 class DatabaseConnection:
     """
@@ -18,6 +18,9 @@ class DatabaseConnection:
         if cls._pool is None:
             try:
                 db_config = settings.get_db_config()
+
+                db_config['auth_plugin'] = 'mysql_native_password'
+
                 cls._pool = pooling.MySQLConnectionPool(
                         pool_name= 'expense_tracker_pool',
                         pool_size= 5,
