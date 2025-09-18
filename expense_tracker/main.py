@@ -38,7 +38,7 @@ class ExpenseTrackerCLI:
         self.category_service = CategoryService()
         self.analytics_service = AnalyticsService()
 
-
+#===================================================================================================================#
     def run(self):
 
         while True:
@@ -91,7 +91,7 @@ class ExpenseTrackerCLI:
         elif choice == '8' and AuthManager.is_admin(): self._admin_manage_users()
         elif choice == '9': self._handle_logout()
 
-
+# ===================================================================================================================#
     def _handle_registration(self):
 
         clear_screen(); print_title('Register New User')
@@ -143,22 +143,121 @@ class ExpenseTrackerCLI:
         print('\nYou Have Been Logged Out.')
         input('Press Enter to Continue...')
 
+# ===================================================================================================================#
+    def _handle_add_account(self):
+        """
+        Handles the logic for adding a new financial account.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Add New Account')
+
+        try:
+            name = get_input('Enter Account Name')
+            if not validate_not_empty(name):
+                raise ValueError("Account name cannot be empty.")
+
+            print('Available Account Types: [1]Cash, [2]Bank, [3]Credit Card')
+            type_choice = get_input('Choose Account Type', lambda c: c if c in ['1','2','3'] else None)
+
+            type_map = {'1': 'CashAccount',
+                        '2': 'BankAccount',
+                        '3': 'CreditCardAccount'}
+
+            account_type = type_map[type_choice]
+
+            balance_str = get_input('Enter Initial Balance (e.g. 500.00)') or '0.0'
+            balance = Decimal(balance_str)
+
+            self.account_service.create_account(user.id, name, account_type, balance)
+            print('\nAccount Created Successfully!')
+
+        except Exception as e:
+            print(f'\nError Creating Account: {e}')
+
+        input('\nPress Enter to Continue...')
+
+    def _handle_edit_account(self):
+        """
+        Handles the logic for editing an account's name.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Edit Account Name')
+
+        account_id_str = get_input('Enter Account ID to Edit', lambda i: i if i.isdigit() else None)
+        if not account_id_str:
+            return
+
+        new_name = get_input('Enter New Name for The Account')
+        if not validate_not_empty(new_name):
+            raise ValueError("Account name cannot be empty.")
+
+        if self.account_service.update_account_name(int(account_id_str), user.id, new_name):
+            print('\nAccount Updated Successfully!')
+        else:
+            print('\nFailed To Update Account. Please Check The ID.')
+
+        input('\nPress Enter to Continue...')
+
+    def _handle_delete_account(self):
+        """
+        Handles the logic for deleting an account.
+        """
+
+        user = AuthManager.get_current_user()
+        clear_screen(); print_title('Delete Account')
+
+        account_id_str = get_input('Enter Account ID to Delete', lambda i: i if i.isdigit() else None)
+        if not account_id_str:
+            return
+
+        confirm = get_input(f'Are You Sure You Want to Delete Account {account_id_str}?? This will Also Delete all Associated Transactions. [y/n]').lower()
+        if confirm == 'y':
+            if self.account_service.delete_account(int(account_id_str), user.id):
+                print('\nAccount Deleted Successfully!')
+            else:
+                print('\nFailed to Delete Account. Please Check The ID.')
+        else:
+            print('\nDeletion Cancelled.')
+
+        input('\nPress Enter to Continue...')
 
     def _manage_accounts(self):
-        user = AuthManager.get_current_user()
-        clear_screen(); print_title('Manage Accounts')
+        """
+        Sub-menu for viewing, adding, editing, and deleting accounts.
+        """
 
-        accounts = self.account_service.get_user_accounts(user.id)
-        headers = ['ID','Name','Type','Balance']
-        data = [{'id': acc.id,
+        user = AuthManager.get_current_user()
+
+        while True:
+            clear_screen(); print_title('Manage Accounts')
+
+            accounts = self.account_service.get_user_accounts(user.id)
+            headers = ['ID','Name','Type','Balance']
+            data = [{'id': acc.id,
                  'name': acc.name,
                  'type': acc.account_type,
                  'balance': f"{acc.balance:.2f}"}
                 for acc in accounts]
-        print_table(data= data, headers= headers)
-        input('\nPress Enter to Continue...')
+            print_table(data= data, headers= headers)
 
+            print('\nOptions: [A]dd, [E]dit, [D]elete, [B]ack to Main Menu')
+            choice = get_input('> ').lower()
 
+            if choice == 'a':
+                self._handle_add_account()
+            elif choice == 'e':
+                self._handle_edit_account()
+            elif choice == 'd':
+                self._handle_delete_account()
+            elif choice == 'b':
+                break
+            else:
+                print('Invalid Option.')
+                input('\nPress Enter to Continue...')
+
+# ===================================================================================================================#
     def _manage_categories(self):
 
         user = AuthManager.get_current_user()
@@ -206,6 +305,8 @@ class ExpenseTrackerCLI:
                     print('Category Not Found OR Could Not be Deleted.')
 
                 input('\nPress Enter to Continue...')
+
+# ===================================================================================================================#
 
     def _handle_add_transaction(self):
         """
@@ -396,7 +497,7 @@ class ExpenseTrackerCLI:
             elif choice == 'b':
                 break
 
-
+# ===================================================================================================================#
     def _handle_set_budget(self):
         """
         Handles the logic for setting or updating a budget for a given category and month.
@@ -478,7 +579,7 @@ class ExpenseTrackerCLI:
                 print('Invalid Option.')
                 input('\nPress Enter to Continue...')
 
-
+# ===================================================================================================================#
     def _run_expense_analysis(self):
         """
         Handles Analysis of Expenses and Provides Charts of Choice to User.
@@ -540,6 +641,7 @@ class ExpenseTrackerCLI:
 
         input('\nPress Enter to Continue...')
 
+# ===================================================================================================================#
     def _admin_manage_users(self):
         """
         Handles Admin's Functionality to List all users and Delete Users.

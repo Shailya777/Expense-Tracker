@@ -64,3 +64,24 @@ class AccountService:
         """
 
         return AccountRepository.delete(account_id, user_id)
+
+    @staticmethod
+    def update_account_name(account_id: int, user_id: int, new_name: str) -> bool:
+        """
+        Updates the name of an existing account.
+
+        :param account_id: The ID of the account to update.
+        :param user_id: The ID of the user who owns the account.
+        :param new_name: The new name for the account.
+
+        :return: bool: True if the update was successful, False otherwise.
+        """
+
+        account = AccountRepository.find_by_id_and_user(account_id, user_id)
+
+        if not account:
+            return False
+
+        account.name = new_name
+        AccountRepository.update(account)
+        return True
