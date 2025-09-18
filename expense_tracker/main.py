@@ -12,6 +12,7 @@ from services.account_service import AccountService
 from services.transaction_service import TransactionService
 from services.budget_service import BudgetService
 from services.category_service import CategoryService
+from services.merchant_service import MerchantService
 from services.analytics_service import AnalyticsService
 
 # Importing Core Modules:
@@ -36,6 +37,7 @@ class ExpenseTrackerCLI:
         self.transaction_service = TransactionService()
         self.budget_service = BudgetService()
         self.category_service = CategoryService()
+        self.merchant_servie = MerchantService()
         self.analytics_service = AnalyticsService()
 
 #===================================================================================================================#
