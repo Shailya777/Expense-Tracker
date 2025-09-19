@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added Functionalities to Add, Edit, Delete USer Accounts.">
-      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/merchant_repo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/services/merchant_service.py" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Imported Merchant Repo and Merchant Service.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/utils/validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/utils/validators.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,22 +198,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Created CLI Helpers file To Print Data and Handle Commands.">
-      <option name="closed" value="true" />
-      <created>1757433148601</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1757433148601</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Changes in Database Configuration File (config.py): Used Class instead of a Function, Used dotenv module.">
-      <option name="closed" value="true" />
-      <created>1757518246982</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1757518246982</updated>
     </task>
     <task id="LOCAL-00034" summary="Changes in db_conn files, made use of class instead of function. used mysql.connector.pooling.">
       <option name="closed" value="true" />
@@ -591,12 +575,26 @@
       <option name="project" value="LOCAL" />
       <updated>1758209915150</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Created Merchant Repository and Merchant Service files, lists merchant list by user and find/create merchant.">
+      <option name="closed" value="true" />
+      <created>1758210917311</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1758210917311</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Imported Merchant Repo and Merchant Service.">
+      <option name="closed" value="true" />
+      <created>1758211171718</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1758211171718</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in auth file. Sets Current User by checking logging details for current session." />
-    <MESSAGE value="Created Category Repository file, handling Creation, Deletion and Search of Category by category id and user id." />
     <MESSAGE value="Created Category Service File, Handling Business Logic like creation, listing and deletion of categories for user." />
     <MESSAGE value="Changes in User Repository file. Added some admin only methods to list all users and delete users." />
     <MESSAGE value="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods." />
@@ -620,6 +618,8 @@
     <MESSAGE value="Changed _manage_categories to get category name separately from validation." />
     <MESSAGE value="Change in plot_monthly_trend, added hue parameter." />
     <MESSAGE value="Added Functionalities to Add, Edit, Delete USer Accounts." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Functionalities to Add, Edit, Delete USer Accounts." />
+    <MESSAGE value="Created Merchant Repository and Merchant Service files, lists merchant list by user and find/create merchant." />
+    <MESSAGE value="Imported Merchant Repo and Merchant Service." />
+    <option name="LAST_COMMIT_MESSAGE" value="Imported Merchant Repo and Merchant Service." />
   </component>
 </project>

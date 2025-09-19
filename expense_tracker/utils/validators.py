@@ -60,13 +60,16 @@ def validate_date(date_str: str, fmt: str = '%Y-%m-%d') -> Optional[datetime]:
     except ValueError:
         return None
 
-def validate_not_empty(text: str) -> bool:
+def validate_not_empty(text: str) -> Optional[str]:
     """
     Validates that a string is not empty or just whitespace.
 
-    :param text: The string to validate.
+    Args:
+        text (str): The string to validate.
 
-    :return: bool: True if the string is not empty, False otherwise.
+    Returns:
+        Optional[str]: The original string if valid, otherwise None.
     """
-
-    return bool(text and not text.isspace())
+    if text and not text.isspace():
+        return text
+    return None

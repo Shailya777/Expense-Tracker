@@ -155,9 +155,7 @@ class ExpenseTrackerCLI:
         clear_screen(); print_title('Add New Account')
 
         try:
-            name = get_input('Enter Account Name')
-            if not validate_not_empty(name):
-                raise ValueError("Account name cannot be empty.")
+            name = get_input('Enter Account Name', validator= validate_not_empty)
 
             print('Available Account Types: [1]Cash, [2]Bank, [3]Credit Card')
             type_choice = get_input('Choose Account Type', lambda c: c if c in ['1','2','3'] else None)
@@ -191,9 +189,7 @@ class ExpenseTrackerCLI:
         if not account_id_str:
             return
 
-        new_name = get_input('Enter New Name for The Account')
-        if not validate_not_empty(new_name):
-            raise ValueError("Account name cannot be empty.")
+        new_name = get_input('Enter New Name for The Account', validator= validate_not_empty)
 
         if self.account_service.update_account_name(int(account_id_str), user.id, new_name):
             print('\nAccount Updated Successfully!')
@@ -279,10 +275,7 @@ class ExpenseTrackerCLI:
         choice = get_input('> ').lower()
 
         if choice == 'a':
-            raw_name = input('Category Name: ').strip()
-            if not validate_not_empty(raw_name):
-                raise ValueError("Category name cannot be empty.")
-            name = raw_name
+            name = get_input('Category Name', validator= validate_not_empty, error_message= 'Category Name Can Not be Empty').strip()
             cat_type = get_input('Type (income/expense)', lambda t : t if t in ['income', 'expense'] else None)
             parent_id_str = get_input('Parent ID (Optional, Press Enter to Skip)')
             parent_id = int(parent_id_str) if parent_id_str.isdigit() else None
@@ -309,6 +302,29 @@ class ExpenseTrackerCLI:
                 input('\nPress Enter to Continue...')
 
 # ===================================================================================================================#
+    def _handle_merchant_selection(self, user_id: int, is_edit: bool = False) -> Optional[int]:
+        """
+        A helper method to handle the CLI flow for selecting, creating, or skipping a merchant.
+
+        :param user_id: The current user's ID.
+        :param is_edit: Flag to slightly change prompts for editing.
+
+        :return: Optional[int]: The selected/created merchant ID, None if skipped, or False if removed.
+        """
+
+        print('\n-- Merchants --')
+        merchants = self.merchant_servie.get_user_merchants(user_id)
+        if merchants:
+            headers = ["ID", 'Name']
+            data = [{'id': m.id, 'name': m.name} for m in merchants]
+            print_table(data= data, headers= headers)
+
+            choice = get_input("Enter Merchant ID, [N]ew, [R]emove, or [S]kip" if is_edit else "Enter Merchant ID, [N]ew, or [S]kip").lower()
+
+            if choice.isdigit() and any(m.id == int(choice) for m in merchants):
+                return int(choice)
+            elif choice == 'n':
+                name = get_input('Enter New Merchant Name')
 
     def _handle_add_transaction(self):
         """
