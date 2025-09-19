@@ -557,7 +557,7 @@ class ExpenseTrackerCLI:
                 'name': cat.name
             } for cat in categories], headers= ['ID','Name'])
 
-            category_id_str = get_input('Enter Category ID to Set Budget for', lambda i: i if i.sidigit() else None)
+            category_id_str = get_input('Enter Category ID to Set Budget for', lambda i: i if i.isdigit() else None)
             amount_str = get_input('Enter Budget Amount', error_message= 'Please Enter a Valid Number.')
             amount = validate_amount(amount_str)
 
@@ -717,9 +717,6 @@ class ExpenseTrackerCLI:
                     print(f'Error: {e}')
 
                 input('\nPress Enter to Continue...')
-
-
-
 
 
 if __name__ == '__main__':

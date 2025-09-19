@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added Merchant Selection _handle_merchant_selection, _handle_add_transaction, _handle_edit_transaction">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changed find_all_by_user SQL in Transaction Repo, used left join with merchants to get transactions that have no merchant id.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/analytics/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/analytics/reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/models/merchant.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/models/merchant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,14 +199,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Changes in SQL Procedures according to changes in Schema.">
-      <option name="closed" value="true" />
-      <created>1757604229275</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1757604229275</updated>
     </task>
     <task id="LOCAL-00037" summary="Changes in Base Model File, SQL Functions file.">
       <option name="closed" value="true" />
@@ -590,11 +584,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758262030262</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Changed find_all_by_user SQL in Transaction Repo, used left join with merchants to get transactions that have no merchant id.">
+      <option name="closed" value="true" />
+      <created>1758262665294</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1758262665294</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods." />
     <MESSAGE value="Started Working on main.py file." />
     <MESSAGE value="Added Manage Category functionality." />
     <MESSAGE value="Added methods to Find Transaction by id and user id and update transactions." />
@@ -619,6 +620,7 @@
     <MESSAGE value="Imported Merchant Repo and Merchant Service." />
     <MESSAGE value="Change in validate_not_empty Validator. NOw returns either the string or false if string is whitespace or blank." />
     <MESSAGE value="Added Merchant Selection _handle_merchant_selection, _handle_add_transaction, _handle_edit_transaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Merchant Selection _handle_merchant_selection, _handle_add_transaction, _handle_edit_transaction" />
+    <MESSAGE value="Changed find_all_by_user SQL in Transaction Repo, used left join with merchants to get transactions that have no merchant id." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed find_all_by_user SQL in Transaction Repo, used left join with merchants to get transactions that have no merchant id." />
   </component>
 </project>

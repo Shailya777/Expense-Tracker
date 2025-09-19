@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import datetime
 
 @dataclass
 class Merchant:
@@ -10,3 +11,4 @@ class Merchant:
     name : str
     user_id : int | None = None
     id : int | None = None
+    created_at : datetime = field(default_factory= datetime.now)

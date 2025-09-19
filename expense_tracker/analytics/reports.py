@@ -1,3 +1,5 @@
+import decimal
+
 import pandas as pd
 from typing import List
 
@@ -100,6 +102,7 @@ def budget_vs_actual(user_id: int, year: int, month: int, transactions_df: pd.Da
     # 3. Merging Budgets vs Actual Data:
     comparison_df = pd.merge(budgets_df, actual_summary, on= 'Category', how= 'left')
     comparison_df['Actual'] = comparison_df['Actual'].fillna(0)
-    comparison_df['variance'] = comparison_df['Budget'] = comparison_df['Actual']
+    comparison_df['Actual'] = comparison_df['Actual'].astype(str).apply(decimal.Decimal)
+    comparison_df['Variance'] = comparison_df['Budget'] - comparison_df['Actual']
 
     return comparison_df[['Category', 'Budget', 'Actual', 'Variance']]
