@@ -149,4 +149,4 @@ This project was a fantastic learning experience that went beyond basic scriptin
 
 ---
 
-# Created by: Shailya Gandhi (https://www.linkedin.com/in/shailya-gandhi-b395a953/)
+### Created by: Shailya Gandhi (https://www.linkedin.com/in/shailya-gandhi-b395a953/)
