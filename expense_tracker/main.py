@@ -319,12 +319,19 @@ class ExpenseTrackerCLI:
             data = [{'id': m.id, 'name': m.name} for m in merchants]
             print_table(data= data, headers= headers)
 
-            choice = get_input("Enter Merchant ID, [N]ew, [R]emove, or [S]kip" if is_edit else "Enter Merchant ID, [N]ew, or [S]kip").lower()
+        choice = get_input("Enter Merchant ID, [N]ew, [R]emove, or [S]kip" if is_edit else "Enter Merchant ID, [N]ew, or [S]kip").lower()
 
-            if choice.isdigit() and any(m.id == int(choice) for m in merchants):
-                return int(choice)
-            elif choice == 'n':
-                name = get_input('Enter New Merchant Name')
+        if choice.isdigit() and any(m.id == int(choice) for m in merchants):
+            return int(choice)
+        elif choice == 'n':
+            name = get_input('Enter New Merchant Name', validate_not_empty)
+            merchant = self.merchant_servie.get_or_create_merchant(user_id, name)
+            print(f"Selected New Merchant '{merchant.name}' (ID: {merchant.id}).")
+            return merchant.id
+        elif choice == 'r' and is_edit:
+            return False
+        else:
+            return None
 
     def _handle_add_transaction(self):
         """
@@ -373,6 +380,8 @@ class ExpenseTrackerCLI:
 
             description = get_input('Enter Description(optional)')
 
+            merchant_id = self._handle_merchant_selection(user.id)
+
             self.transaction_service.add_transaction(
                 user_id= user.id,
                 account_id= account_id,
@@ -380,7 +389,8 @@ class ExpenseTrackerCLI:
                 amount= amount,
                 transaction_type= trans_type,
                 transaction_date= trans_date,
-                description= description
+                description= description,
+                merchant_id= merchant_id
             )
             print('\nTransaction Added Successfully!!')
 
@@ -467,12 +477,24 @@ class ExpenseTrackerCLI:
         new_desc = get_input(f'Description (Current: {trans.description})')
         final_desc = new_desc if new_desc is not None else trans.description
 
+        # Editing Merchant:
+        print(f'\nCurrent Merchant ID: {trans.merchant_id or 'None'}')
+        new_merchant_id = self._handle_merchant_selection(user.id, is_edit= True)
+
+        if new_merchant_id is None: # User skipped
+            final_merchant_id = trans.merchant_id
+        elif not new_merchant_id: # User explicitly removed # merchant_id == False
+            final_merchant_id = None
+        else:  # User selected or created one
+            final_merchant_id = new_merchant_id
+
         new_data = {
             'transaction_date': new_date,
             'account_id': new_account_id,
             'category_id': new_category_id,
             'amount': new_amount,
-            'description': final_desc
+            'description': final_desc,
+            'merchant_id': final_merchant_id
         }
 
         if self.transaction_service.update_transaction(trans.id, user.id, new_data):
