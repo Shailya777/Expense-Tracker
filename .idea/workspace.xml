@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Change in validate_not_empty Validator. NOw returns either the string or false if string is whitespace or blank.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Added Merchant Selection _handle_merchant_selection, _handle_add_transaction, _handle_edit_transaction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/transaction_repo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,14 +197,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Changes in SQL Schema.">
-      <option name="closed" value="true" />
-      <created>1757603560793</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1757603560793</updated>
     </task>
     <task id="LOCAL-00036" summary="Changes in SQL Procedures according to changes in Schema.">
       <option name="closed" value="true" />
@@ -590,11 +582,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758260190935</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Added Merchant Selection _handle_merchant_selection, _handle_add_transaction, _handle_edit_transaction">
+      <option name="closed" value="true" />
+      <created>1758262030262</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1758262030262</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in User Repository file. Added some admin only methods to list all users and delete users." />
     <MESSAGE value="Changes in Transaction Service file. Added Export to CSV and Import From CSV Methods." />
     <MESSAGE value="Started Working on main.py file." />
     <MESSAGE value="Added Manage Category functionality." />
@@ -619,6 +618,7 @@
     <MESSAGE value="Created Merchant Repository and Merchant Service files, lists merchant list by user and find/create merchant." />
     <MESSAGE value="Imported Merchant Repo and Merchant Service." />
     <MESSAGE value="Change in validate_not_empty Validator. NOw returns either the string or false if string is whitespace or blank." />
-    <option name="LAST_COMMIT_MESSAGE" value="Change in validate_not_empty Validator. NOw returns either the string or false if string is whitespace or blank." />
+    <MESSAGE value="Added Merchant Selection _handle_merchant_selection, _handle_add_transaction, _handle_edit_transaction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Merchant Selection _handle_merchant_selection, _handle_add_transaction, _handle_edit_transaction" />
   </component>
 </project>

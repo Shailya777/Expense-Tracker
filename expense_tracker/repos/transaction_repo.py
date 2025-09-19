@@ -61,7 +61,7 @@ class TransactionRepository:
                     on (t.category_id = c.id)
                     join accounts a
                     on (t.account_id = a.id)
-                    join merchants m
+                    left join merchants m
                     on (t.merchant_id = m.id)
                     where t.user_id = %s
                     order by t.transaction_date desc
