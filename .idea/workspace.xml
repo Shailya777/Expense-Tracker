@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Seed file to Test Functionalities.">
-      <change afterPath="$PROJECT_DIR$/expense_tracker/models/audit_log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/repos/audit_log_repo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/expense_tracker/services/audit_log_service.py" afterDir="false" />
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Audit Log Model, Repository and Service to log user and admin actions.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/services/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/services/user_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,14 +193,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Created Triggers to update account balance after insert / update / delete on Transactions Table and to enforce category parent integrity on Categories Table.">
-      <option name="closed" value="true" />
-      <created>1757682574729</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1757682574729</updated>
     </task>
     <task id="LOCAL-00040" summary="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data.">
       <option name="closed" value="true" />
@@ -588,11 +578,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758288247049</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Created Audit Log Model, Repository and Service to log user and admin actions.">
+      <option name="closed" value="true" />
+      <created>1758349481965</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1758349481965</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added methods to Find Transaction by id and user id and update transactions." />
     <MESSAGE value="Changes in Transaction Service File. Added Method to Update Transaction and Get Transaction by ID and User ID." />
     <MESSAGE value="Changes in User Service File. Added Methods to List all USers and Delete Users for Admin." />
     <MESSAGE value="Added Methods to Manage Transaction, Add Transaction, Delete Transaction, Edit Transaction (In Process)." />
@@ -617,6 +614,7 @@
     <MESSAGE value="Changed find_all_by_user SQL in Transaction Repo, used left join with merchants to get transactions that have no merchant id." />
     <MESSAGE value="Changes in budget_vs_actual, converted actual to decimal (same as budget) type, fixed a typo in variance column. Fixed typo in main.py, _handle_set_budget, added created_at in merchant model." />
     <MESSAGE value="Seed file to Test Functionalities." />
-    <option name="LAST_COMMIT_MESSAGE" value="Seed file to Test Functionalities." />
+    <MESSAGE value="Created Audit Log Model, Repository and Service to log user and admin actions." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Audit Log Model, Repository and Service to log user and admin actions." />
   </component>
 </project>

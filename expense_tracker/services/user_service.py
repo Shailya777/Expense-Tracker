@@ -2,6 +2,7 @@ import bcrypt
 from typing import Optional, List
 from expense_tracker.models.user import User
 from expense_tracker.repos.user_repo import UserRepository
+from expense_tracker.services.audit_log_service import AuditLogService
 
 class UserService:
     """
@@ -57,7 +58,11 @@ class UserService:
 
         if user and bcrypt.checkpw(password.encode('utf-8'),
                                    user.password_hash.encode('utf-8')):
+            AuditLogService.log('Login_Success', user_id= user.id, details= f'User {user.username} logged in.')
             return user
+
+        user_id = user.id if user else None
+        AuditLogService.log('Login_Failure', user_id= user.id, details= f'Failed Login Attempt for Email: {email}')
         return None
 
 
@@ -87,5 +92,10 @@ class UserService:
         if user_id_to_delete == admin_user.id:
             raise ValueError('Admin Users Can Not Delete Their Own Account.')
 
+        AuditLogService.log(
+            'Admin_Delete_User',
+            user_id= admin_user.id,
+            details= f'Admin {admin_user.username} Deleted User with ID {user_id_to_delete}'
+        )
         return UserRepository.delete(user_id= user_id_to_delete)
 
