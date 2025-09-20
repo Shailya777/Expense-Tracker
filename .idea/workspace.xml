@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Created Audit Log Model, Repository and Service to log user and admin actions.">
+    <list default="true" id="e15ddd97-87ad-4f92-b197-6a6d8375986a" name="Changes" comment="Changes in Login and Delete user methods to log the changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expense_tracker/services/user_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/services/user_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expense_tracker/repos/audit_log_repo.py" beforeDir="false" afterPath="$PROJECT_DIR$/expense_tracker/repos/audit_log_repo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,14 +194,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1756993413388</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Changes in Base Model and Model Files. Used dataclass decorator in some models to reduce boilerplate codes of storing data.">
-      <option name="closed" value="true" />
-      <created>1757684327550</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1757684327550</updated>
     </task>
     <task id="LOCAL-00041" summary="Changes in USer Repository file.">
       <option name="closed" value="true" />
@@ -586,11 +579,18 @@
       <option name="project" value="LOCAL" />
       <updated>1758349481965</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Changes in Login and Delete user methods to log the changes.">
+      <option name="closed" value="true" />
+      <created>1758350335751</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1758350335751</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in Transaction Service File. Added Method to Update Transaction and Get Transaction by ID and User ID." />
     <MESSAGE value="Changes in User Service File. Added Methods to List all USers and Delete Users for Admin." />
     <MESSAGE value="Added Methods to Manage Transaction, Add Transaction, Delete Transaction, Edit Transaction (In Process)." />
     <MESSAGE value="Finished Edit Transaction Method." />
@@ -615,6 +615,7 @@
     <MESSAGE value="Changes in budget_vs_actual, converted actual to decimal (same as budget) type, fixed a typo in variance column. Fixed typo in main.py, _handle_set_budget, added created_at in merchant model." />
     <MESSAGE value="Seed file to Test Functionalities." />
     <MESSAGE value="Created Audit Log Model, Repository and Service to log user and admin actions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Audit Log Model, Repository and Service to log user and admin actions." />
+    <MESSAGE value="Changes in Login and Delete user methods to log the changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in Login and Delete user methods to log the changes." />
   </component>
 </project>

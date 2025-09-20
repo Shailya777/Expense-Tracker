@@ -14,6 +14,7 @@ from services.budget_service import BudgetService
 from services.category_service import CategoryService
 from services.merchant_service import MerchantService
 from services.analytics_service import AnalyticsService
+from services.audit_log_service import AuditLogService
 
 # Importing Core Modules:
 from core.db_conn import DatabaseConnection
@@ -39,6 +40,7 @@ class ExpenseTrackerCLI:
         self.category_service = CategoryService()
         self.merchant_servie = MerchantService()
         self.analytics_service = AnalyticsService()
+        self.audit_log_service = AuditLogService()
 
 #===================================================================================================================#
     def run(self):
@@ -78,7 +80,7 @@ class ExpenseTrackerCLI:
         print('6. Export/Import CSV')
 
         if AuthManager.is_admin():
-            print('8. Admin: Manage Users')
+            print('8. Admin Menu')
 
         print('9. Logout')
 
@@ -90,7 +92,7 @@ class ExpenseTrackerCLI:
         elif choice == '4': self._manage_budgets()
         elif choice == '5': self._run_expense_analysis()
         elif choice == '6': self._handle_csv_operations()
-        elif choice == '8' and AuthManager.is_admin(): self._admin_manage_users()
+        elif choice == '8' and AuthManager.is_admin(): self._admin_menu()
         elif choice == '9': self._handle_logout()
 
 # ===================================================================================================================#
@@ -682,6 +684,45 @@ class ExpenseTrackerCLI:
         input('\nPress Enter to Continue...')
 
 # ===================================================================================================================#
+    def _admin_menu(self):
+        """
+        Displays the menu for administrator-specific actions.
+        """
+
+        while True:
+            clear_screen(); print_title('Admin Menu')
+            print('1. Manage Users')
+            print('2. View Audit Logs')
+            print('B. Back to Main Menu')
+
+            choice = get_input('> ').lower()
+
+            if choice == '1':
+                self._admin_manage_users()
+            if choice == '2':
+                self._admin_view_audit_logs()
+            elif choice == 'b':
+                break
+
+    def _admin_view_audit_logs(self):
+        """
+        Fetches and displays all audit log entries.
+        """
+
+        clear_screen(); print_title('System Audit Logs')
+        logs = self.audit_log_service.get_all_logs()
+
+        headers = ['Timestamp','UserName','Action','Details']
+        data = [{
+            'timestamp': log['timestamp'].strftime('%Y-%m-%d %H:%M:%S'),
+            'username': log.get('username') or f'User Id {log.get('user_id', 'N/A')}',
+            'action': log['action'],
+            'details': log['details']
+        } for log in logs]
+
+        print_table(data= data, headers= headers)
+        input('\nPress Enter to Continue...')
+
     def _admin_manage_users(self):
         """
         Handles Admin's Functionality to List all users and Delete Users.

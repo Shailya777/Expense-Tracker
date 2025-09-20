@@ -36,7 +36,7 @@ class AuditLogRepository:
         with get_db_connection() as conn:
             with conn.cursor(dictionary = True) as cursor:
                 sql = """
-                    select a.id, a.timestamp, a.action, a.details, u,username
+                    select a.id, a.timestamp, a.action, a.details, u.username
                     from audit_log a
                     left join users u
                     on (a.user_id = u.id)
